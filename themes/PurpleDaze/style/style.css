@@ -1,0 +1,60 @@
+FONT	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+TD		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 16px}
+BODY	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 12px}
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+
+/* Form elements */
+input{border-color: #000000;border-width:1px;color:#000000;text-indent:2px;font:normal 10px Verdana,Arial,Helvetica,sans-serif}
+textarea{border-color: #000000;border-width:1px;color:#000000;font:normal 10px Verdana,Arial,Helvetica,sans-serif}
+select{border-color: #000000;border-width:1px;color:#000000;background-color:#FFFFFF;font:normal 10px Verdana,Arial,Helvetica,sans-serif}
+
+/* The buttons used for bbCode styling in message post */
+input.button{background-color: #9489AB;font:10px Verdana,Arial,Helvetica,sans-serif}
+
+/* The main submit button option */
+input.mainoption{background-color: #9489AB;font-weight:bold}
+
+/* None-bold submit button */
+input.liteoption{background-color: #9489AB;font-weight:normal}
+
+/* This is the line in the posting page which shows the rollover
+help line. This is actually a text box,but if set to be the same
+colour as the background no one will know;)
+*/
+.helpline{background:#83BDB1;border-style:none}
+
+/* Quote & Code blocks */
+.code{background: #83BDB1;border: 1px solid #5B5367;color: #5B5367;font:11px Courier,'Courier New',sans-serif}
+.quote{background: #83BDB1;border: 1px solid #5B5367;color:#5B5367;font:11px/125% Verdana,Arial,Helvetica,sans-serif}
+
+.bodyline{border: 1px double #5B5367}
+body{font:10px Verdana,Arial,Helvetica,sans-serif;}
+
+a:link,a:active,a:visited{color:#5B5367;text-decoration:none; FONT-SIZE: 10px}
+a:hover{color: #F4EFBE;text-decoration:none; FONT-SIZE: 10px}
+.title 		 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.content 	 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.block-title {BACKGROUND: none; COLOR: white; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+.storytitle  {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 12px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.storycat	 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxtitle 	 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxcontent  {BACKGROUND: none; COLOR: #5B5367;  FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.option 	 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.tiny		 {BACKGROUND: none; COLOR: #5B5367; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.small		 {BACKGROUND: none; COLOR: #1A6742; FONT-SIZE:  9px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+#albero a:link { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#albero a:visited { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#albero a:active { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#albero a:hover { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#albero { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+
+#into_albero a:link { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#into_albero a:visited { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#into_albero a:active { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#into_albero a:hover { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+#into_albero { color:#5B5367;text-decoration:none; FONT-SIZE: 16px; }
+
+table.bottomBorder { border-collapse:collapse; }
+table.bottomBorder td, table.bottomBorder th { border-bottom:1px dotted black;padding:5px; }

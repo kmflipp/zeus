@@ -1,0 +1,517 @@
+<div class="Section1">
+
+<?php if ($_GET[view]=='generale' && $numero=='1') { ?>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top">
+			<table>
+				<?php
+				$trovato=0;
+				$sql="SELECT * FROM nuke_polizze_ldr where idpolizza='$_GET[idpolizza]'";
+				$rsldr = $db->sql_query($sql);
+				while ($rowldr = $db->sql_fetchrow($rsldr))
+				{
+					if (trim($rowldr[spedizione])=='1') {
+						$indirizzo = str_replace("/n","<br>",$rowldr[value1]);
+						$cap = str_replace("/n","<br>",$rowldr[value2]);
+						$citta = $rowldr[value3];
+						$stato = $rowldr[value4];
+						$trovato=1;
+					}
+				}
+				$sql="SELECT * FROM nuke_clienti_polizze WHERE id='$row[field3]' and idpolizza=$_GET[idpolizza]";
+				$rscli = $db->sql_query($sql);
+				$rowcli = $db->sql_fetchrow($rscli);
+				$nr = $db->sql_numrows($rscli);
+				if ($rowcli[cognome]!='') {
+				echo "<tr>
+					<td valign=top><i><font face='Calibri' size=3>Stipulante</font></i></td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td valign=top><font face='Calibri' size=3><strong>";
+					echo $rowcli[cognome]." ".$rowcli[nome]."<br>";
+					if ($trovato==0) {
+						echo $rowcli[via1]."<br>";
+						echo $rowcli[npa1]." ".$rowcli[localita1]."<br>".$rowcli[stato1]."<br>";
+					}else{
+						echo $indirizzo."<br>";
+						echo $cap." ".$citta."<br>".$stato."<br>";
+					}
+					echo "</strong></font></td>
+				</tr>";
+				}
+				?>
+				<tr>
+					<td colspan=3>&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<?php
+				$sql="SELECT * FROM nuke_clienti_polizze WHERE id='$row[field4]' and idpolizza=$_GET[idpolizza]";
+				$rscli = $db->sql_query($sql);
+				$rowcli = $db->sql_fetchrow($rscli);
+				if ($rowcli[cognome]!='') {
+				echo "<tr>
+					<td valign=top><i><font face='Calibri' size=3>Assicurato</font></i></td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td valign=top><font face='Calibri' size=3><strong>";
+					echo $rowcli[cognome]." ".$rowcli[nome]."<br>";
+					echo $rowcli[via1]."<br>";
+					echo $rowcli[npa1]." ".$rowcli[localita1]." - ".$rowcli[stato1]."<br>";
+					echo "</strong></font></td>
+				</tr>";
+				}
+				?>
+				<tr>
+					<td colspan=3>&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<?php
+				//$sql="SELECT * FROM nuke_clienti WHERE id=$row[field5]";
+				//$rscli = $db->sql_query($sql);
+				//$rowcli = $db->sql_fetchrow($rscli);
+				if ($row[field5]!='') {
+				echo "<tr>
+					<td valign=top><i><font face='Calibri' size=3>Assicurato</font></i></td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td valign=top><font face='Calibri' size=3><strong>";
+					echo $row[field5];
+					echo "</strong></font></td>
+				</tr>";
+				}
+				?>
+			</table>
+		</td>
+	</tr>
+</table>
+<?php } ?>
+
+<?php if ($_GET[view]=='generale' && $numero=='2') { ?>
+
+<table border="0" width="100%">
+	<tr>
+		<td valign=top><font face='Calibri' style="font-size: 0.90em">Tipo di polizza<br><i>Type</i></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php
+		echo "<strong>$row[field2]</strong><br><i>$row[field9]</i>";
+		?>
+		</center></font></td>
+	</tr>
+	<tr><td colspan=2>&nbsp;</td></tr>
+	<tr>
+		<td valign=top><font face="Calibri" style="font-size: 0.90em">Inizio contrattuale<br><i>Inception Date</i></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php echo "<strong>Dal $row[field6]</strong> dalle ore 00:00 <strong>al $row[field10]</strong> alle ore 24:00"; ?></strong><br><i><?php echo "From $row[field6] hours to $row[field10] at 24:00 hours"; ?></i></center></font></td>
+	</tr>
+	<tr><td colspan=2>&nbsp;</td></tr>
+	<tr>
+		<td valign=top><font face="Calibri" style="font-size: 0.90em">Scadenza contrattuale<br><i>Contractual Expire</i></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php echo $row[field10];?></center></font></td>
+	</tr>
+	<tr><td colspan=2>&nbsp;</td></tr>
+	<tr>
+		<td valign=top><font face="Calibri" style="font-size: 0.90em">Clausola di rinnovo<br><i>Renwal clause</i></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php 
+			if ($row[rinnovo]=='1') {
+				if ($row[idpadre]=='') {
+					if ($row[field14]=='5') $enneyears='3';
+					if ($row[field14]=='10') $enneyears='5';
+					if ($row[field14]<'8') $enneyears='3';
+					if ($row[field14]>'8') $enneyears='5';
+					if ($enneyears=='3') $unitldate=strtotime('+3 years',strtotime($row[field6]));
+					if ($enneyears=='5') $unitldate=strtotime('+5 years',strtotime($row[field6]));
+					$anno_rinnovo=date("Y",$unitldate);
+					if ($row[anno_rinnovo]!='') $anno_rinnovo=$row[anno_rinnovo];
+					echo "Si. Scadenza 31.05.$anno_rinnovo";
+				}else{
+					$sql_idpadre="SELECT * FROM nuke_offerte where id='$row[idpadre]'";
+					$rs_idpadre = $db->sql_query($sql_idpadre);
+					$row_idpadre = $db->sql_fetchrow($rs_idpadre);
+					if ($row_idpadre[field14]=='5') $enneyears='3';
+					if ($row_idpadre[field14]=='10') $enneyears='5';
+					if ($row_idpadre[field14]<'8') $enneyears='3';
+					if ($row_idpadre[field14]>'8') $enneyears='5';
+					if ($enneyears=='3') $unitldate=strtotime('+3 years',strtotime($row_idpadre[field6]));
+					if ($enneyears=='5') $unitldate=strtotime('+5 years',strtotime($row_idpadre[field6]));
+					$anno_rinnovo=date("Y",$unitldate);
+					if ($row[anno_rinnovo]!='') $anno_rinnovo=$row[anno_rinnovo];
+					echo "Si. Scadenza 31.05.$anno_rinnovo";
+				}
+			}else{
+				echo "No";
+			}
+		?>
+		</center></font></td>
+	</tr>
+	<tr><td colspan=2>&nbsp;</td></tr>
+	<tr>
+		<td valign=top><font face="Calibri" style="font-size: 0.90em">Giorni di copertura<br><i>Coverage Days</i></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php echo number_format($row[field11],0,".","'");?></center></font></td>
+	</tr>
+	<tr><td colspan=2>&nbsp;</td></tr>
+	<tr>
+		<td valign=top><font face="Calibri" style="font-size: 0.90em"><strong>Limiti territoriali<br><i>Territorial Limits</i></strong></font></td>
+		<td valign=top width=60%><font face="Calibri" style="font-size: 0.90em">
+		<?php
+		echo $row[field7]."<br>".$row[field17];
+		?>
+		</center></strong></font></td>
+	</tr>
+</table>
+<br><br>
+<?php 
+if ($row[note]!='') {
+?>
+<table>
+	<tr>
+		<td valign=top align=left width=10%><font face='Calibri' style='font-size: 0.90em'><strong>Note</strong><br><i>Clipboard</i></font></td>
+		<td width=15% valign=top align=left><font face='Calibri' style='font-size: 0.90em'><?php echo nl2br($row[note]); ?></font></td>
+	</tr>
+</table>
+<?php
+}
+?>
+
+<?php } ?>
+
+<?php if ($_GET[view]=='generale' && $numero=='3') { ?>
+
+<center>
+<table border="0" width="80%">
+	<tr>
+		<td width="25%" valign="top"><font face="Calibri" style="font-size: 0.90em"><strong>Condizioni Generali</font></td>
+		<td width="25%" valign="top"><font face="Calibri" style="font-size: 0.90em"><i>- General Conditions</i></font></td>
+		<td valign="top"><font face="Calibri" style="font-size: 0.90em">
+		<?php
+		$rscga = $db->sql_query("SELECT field1,field2 FROM nuke_polizze_detail_cga WHERE idpolizza=$_GET[idpolizza]");
+		$nrcga = $db->sql_numrows($rscga);
+		for($x = 0; $x < $nrcga; $x++)
+		{
+			$rowcga = $db->sql_fetchrow($rscga);
+			echo "<a style=font-size:0.90em; href='gestionale.php?name=lloyds&subname=polizze&act=explode&nomefile=$rowcga[field2]&idpolizza=$_GET[idpolizza]' target=_blank>$rowcga[field1]</a><br>";
+		}
+		?>
+		</font></td>
+	</tr>
+</table>
+</center>
+
+<hr color="#000000" size="1">
+
+<center>
+<table border="0" width="80%">
+	<tr>
+		<td colspan=4 align=left><font face="Calibri" style="font-size: 0.90em">Informazioni sul pagamento / <i>Payment informations</i></font></td>
+	</tr>
+	<tr>
+		<td width="25%"><font face="Calibri" style="font-size: 0.90em"><strong>Valuta</strong></font></td>
+		<td width="45%"><font face="Calibri" style="font-size: 0.90em"><i>- Currency</i></font></td>
+		<td width="15%"><font face="Calibri" style="font-size: 0.90em"><strong><?php echo $row[valuta]; ?></strong></font></td>
+		<td width="15%"></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em"><strong><u>Somma assicurata</u></strong></font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Sum Insured</i></font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><strong><?php echo number_format(round($row[field8]*20)/20,"2",".","'"); ?></strong></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Premio annuo</font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Annual Premium</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em"><?php echo number_format(round($row[field12]*20)/20,"2",".","'"); ?></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Ribasso &nbsp;&nbsp;&nbsp;<?php echo "($row[field14]%)"; ?></font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Discount</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em"><?php
+			$risultato = $row[field12]*$row[field14]/100;
+			$prezzo_ribassato = $row[field12]-($row[field12]*$row[field14]/100);
+			echo number_format(round($risultato*20)/20,"2",".","'");
+			?>
+			</font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Bollo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo "($row[field13]%)"; ?></font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Stamp</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em"><?php
+			$risultato = $prezzo_ribassato*$row[field13]/100;
+			echo number_format(round($risultato*20)/20,"2",".","'");
+			?></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em"><?php if ($row[field11]==366 || $row[field11]==365)  echo "<strong>"; ?>Premio totale annuo</strong></font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Annual Net Premium</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em"><?php if ($row[field11]<366)  echo "<strong>"; ?><?php echo number_format(round($row[field15]*20)/20,"2",".","'"); ?></strong></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan=4><hr></td>
+	</tr>
+	<?php if ($row[field11]==366 || $row[field11]==365)  { ?>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan=4><font size=2>&nbsp;</font></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td><font face="Calibri" size=2>&nbsp;</font></td>
+			<td></td>
+		</tr>
+	<?php } else { ?>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em">Giorni Prorata</font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Prorata Days</i></font></td>
+			<td colspan=2 align=left><font face="Calibri" style="font-size: 0.90em"><?php echo number_format($row[field11],0,".","'"); ?></font></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em">Premio Prorata</font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Pro rata Premium</i></font></td>
+			<td align=right><font face="Calibri" style="font-size: 0.90em"><?php echo number_format(round($row[field12]/365*$row[field11]*20)/20,2,".","'"); ?></font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em">Ribasso &nbsp;&nbsp;&nbsp;<?php echo "($row[field14]%)"; ?></font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Discount</i></font></td>
+			<td align=right><font face="Calibri" style="font-size: 0.90em"><?php
+				$risultato = ($row[field12]/365*round($row[field11]))*$row[field14]/100;
+				$prezzo_ribassato = ($row[field12]/365*round($row[field11]))-(($row[field12]/365*round($row[field11]))*$row[field14]/100);
+				echo number_format(round($risultato*20)/20,"2",".","'");
+				?>
+				</font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em">Bollo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo "($row[field13]%)"; ?></font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Stamp</i></font></td>
+			<td align=right><font face="Calibri" style="font-size: 0.90em"><?php
+				$risultato = $prezzo_ribassato*$row[field13]/100;
+				$prezzo_totale = $prezzo_ribassato+$risultato;
+				echo number_format(round($risultato*20)/20,"2",".","'");
+				?></font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em"><strong>Premio totale netto</strong></font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Net Total Premium</i></font></td>
+			<td align=right><b><font face="Calibri" style="font-size: 0.90em"><?php echo "<strong>".number_format(round($prezzo_totale*20)/20,"2",".","'")."</strong>"; ?></font></b></td>
+			<td></td>
+		</tr>
+	<?php }  ?>
+	<?php
+	if ($row[rimborso]!='') { ?>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em"><?php if ($row[etichetta]==!'') { echo trim($row[etichetta]); }else{ echo "Rimborso"; }?></strong></font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"></td>
+			<td align=right><font face="Calibri" style="font-size: 0.90em"><?php echo trim($row[rimborso]); ?></font></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><font face="Calibri" style="font-size: 0.90em"><strong>Totale da pagare</strong></font></td>
+			<td><font face="Calibri" style="font-size: 0.90em"><i>- Total to pay</i></font></td>
+			<?php 
+			if ($prezzo_totale=='') $prezzo_totale=$row[field15];
+			$ari_totale = floatval($prezzo_totale) + floatval(trim($row[rimborso])); ?>
+			<td align=right><font face="Calibri" style="font-size: 0.90em"><?php echo number_format(round($ari_totale*20)/20,"2",".","'"); ?></font></td>
+			<td></td>
+		</tr>
+	<?php } ?>
+	<tr>
+		<td colspan=4><hr></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Scadenza</font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Expiry Premium</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em"><?php echo $row[field10]; ?></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Pagamento</font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Payment</i></font></td>
+		<td align=right><font face="Calibri" style="font-size: 0.90em">Annuale</font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font face="Calibri" style="font-size: 0.90em">Franchigia</font></td>
+		<td><font face="Calibri" style="font-size: 0.90em"><i>- Excess</i></font></td>
+		<td colspan=2 align=left><font face="Calibri" style="font-size: 0.90em">
+		<?php 
+		$testo = nl2br($row[franchigia]);
+		if (is_numeric($row[franchigia])) number_format($row[franchigia],2,".",chr(180));
+		echo $testo;
+		?> 
+		</font></td>
+		<td></td>
+	</tr>
+</table>
+</center>
+
+<hr color="#000000" size="1">
+
+<table border="0" width="100%" cellspacing=4 cellpadding=4>
+<?php
+echo "<tr><td valign=top align=left width=10%><font face='Calibri' style='font-size: 0.90em'><strong>Luogo del rischio</strong><br><i>Risk Place</i></font></td>";
+$rsldr = $db->sql_query("SELECT * FROM nuke_polizze_ldr WHERE idpolizza=$_GET[idpolizza] and active='1'");
+$nrldr = $db->sql_numrows($rsldr);
+for($x = 0; $x < $nrldr; $x++)
+{
+	$rowldr = $db->sql_fetchrow($rsldr);
+	echo "<td width=15% valign=top align=left><strong><font face='Calibri' style='font-size: 0.90em'>$rowldr[detail]</strong><br>$rowldr[value1]<br>$rowldr[value2] $rowldr[value3]<br>$rowldr[value4]</font></td>";
+}
+echo "</tr>";
+?>
+</table>
+<?php } ?>
+
+<?php if ($_GET[view]=='beni') { ?>
+
+<p align=center><font face="Calibri" size="4"><strong>Oggetti assicurati</strong><br><i>Insured Objects</i></font></p>
+
+<table border="0" width="100%">
+<?php
+$rscategorie = $db->sql_query1("select distinct idcategoria,cast(ordine_c as int) as pippo from nuke_polizze_detail1 where idpolizza=$idpolizza order by pippo");
+$nrcategorie = $db->sql_numrows($rscategorie);
+$pre='';
+for($x = 0; $x < $nrcategorie; $x++)
+{
+	$rowcategorie = $db->sql_fetchrow($rscategorie);
+	$y=$x+1;
+	$sql_franchigia = "select * from nuke_polizze_detail1 where idcategoria='$rowcategorie[idcategoria]' and idpolizza='$idpolizza' and franchigia is not null";
+	$rs_franchigia = $db->sql_query1($sql_franchigia);
+	$row_franchigia = $db->sql_fetchrow($rs_franchigia);
+	echo '
+	<tr height=30>
+		<td bgcolor="#C0C0C0" width="7%"><font face="Calibri" size="3">'.$y.'</font></td>';
+		echo "<td bgcolor=#E9E7E7><font face=Calibri size=2>$rowcategorie[idcategoria]&nbsp;&nbsp;::&nbsp;&nbsp;Valuta $row[valuta]";
+		if ($row_franchigia[franchigia]!='') echo "&nbsp;&nbsp;::&nbsp;&nbsp;Franchigia ".number_format($row_franchigia[franchigia],2,".","'");
+		echo "</font></td>";
+		echo '<td bgcolor="#C0C0C0" width="15%" align=center><font face="Calibri" size=2>Somma</font></td>
+		<td width="15%" bgcolor="#C0C0C0" align=center><font face="Calibri" size=2>Tasso</font></td>
+		<td width="15%" bgcolor="#C0C0C0" align=center><font face="Calibri" size=2>Premio</font></td>
+	</tr>
+	';
+
+	$totale_somma_per_categoria='';
+	$totale_premio_per_categoria='';
+	$somma_per_sottocategoria='';
+	$premio_per_sottocategoria='';
+	$tasso_per_sottocategoria='';
+	$pre = '';
+	$rsbeni = $db->sql_query("SELECT * FROM nuke_polizze_detail1 WHERE idcategoria='$rowcategorie[idcategoria]' and idpolizza=$idpolizza order by ordine_c,ordine_e");
+	$nrbeni = $db->sql_numrows($rsbeni);
+	$h = 1;
+	for($z = 0; $z < $nrbeni+1; $z++)
+	{
+		$rowbeni = $db->sql_fetchrow($rsbeni);
+		if ($rowbeni[identita]==$pre && $rowbeni[identita]!='') {
+			$somma_per_sottocategoria += $rowbeni[somma];
+			$premio_per_sottocategoria += $rowbeni[premio];
+			$tasso_per_sottocategoria = $rowbeni[tasso];
+			echo '
+			<tr>
+				<td width="7%" align=center><font face="Calibri" size=2></font></td>
+				<td><font face="Calibri" size=2>'.$rowbeni[description].'</td>
+				<td width="15%"><font face="Calibri" size=2>'.number_format($rowbeni[somma],2,".","'").'</font></td>
+				<td width="15%"><font face="Calibri" size=2></font></td>
+				<td width="15%"><font face="Calibri" size=2></font></td>
+			</tr>
+			';
+		} elseif ($rowbeni[identita]!=$pre || $rowbeni[identita]!='') {
+			if ($h!='1') {
+				echo '
+				<tr>
+					<td width="7%"><font face="Verdana"></font></td>
+					<td><font face="Calibri" size=2>TOTALE</td>
+					<td width="15%"><font face="Calibri" size=2>'.number_format($somma_per_sottocategoria,2,".","'").'</font></td>
+					<td align=center width="15%"><font face="Calibri" size=2>'.$tasso_per_sottocategoria.'%</font></td>
+					<td width="15%"><font face="Calibri" size=2>'.number_format($premio_per_sottocategoria,2,".","'").'</font></td>
+				</tr>';
+				echo '
+				<tr>
+					<td width="7%">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td width="15%">&nbsp;</td>
+					<td width="15%">&nbsp;</td>
+					<td width="15%">&nbsp;</td>
+				</tr>';
+				$somma_per_sottocategoria ='';
+				$premio_per_sottocategoria ='';
+				$riga++;
+				$riga++;
+
+			}
+			if ($rowbeni[identita]!='') {
+				echo '
+				<tr>
+					<td width="7%" valign=top align=center><font face="Calibri" size=2>'.$y.'.'.$h.'</font></td>
+					<td><font face="Calibri" size=2>'.$rowbeni[identita].'<br>'.$rowbeni[description].'</font></td>
+					<td valign=top width="15%"><font face="Calibri" size=2>'.number_format($rowbeni[somma],2,".","'").'</font></td>
+					<td></td>
+					<td></td>
+				</tr>
+				';
+				$riga++;
+			}
+			$somma_per_sottocategoria +=$rowbeni[somma];
+			$premio_per_sottocategoria +=$rowbeni[premio];
+			$tasso_per_sottocategoria = $rowbeni[tasso];			
+			$h++;
+		}
+		$totale_somma_per_categoria+=$rowbeni[somma];
+		$totale_premio_per_categoria+=$rowbeni[premio];
+		$pre=$rowbeni[identita];
+	}
+}
+echo "</table>";
+if ($riga>27) {
+	echo "<br clear=all style='mso-special-character:line-break;page-break-before:always'>";
+	echo '<p align=center><font face="Calibri" size="4"><strong>Oggetti assicurati</strong><br><i>Insured Objects</i></font></p>';
+}
+?>
+
+<hr>
+
+<table border="0" width="100%">
+	<tr height=60>
+		<td width="7%">&nbsp;</td>
+		<td bgcolor="#C0C0C0" align=left><font face="Calibri" size=2><b>Totale somma e premio</b><br><i>Total sum and premium</i></font></td>
+		<td bgcolor="#C0C0C0" width="15%" align=center><font face="Calibri" size=2><?php echo number_format($row[field8],2,".","'"); ?></font></td>
+		<td width="15%" bgcolor="#C0C0C0" align=center><font face="Calibri" size=2>&nbsp;</font></td>
+		<td width="15%" bgcolor="#C0C0C0" align=center><font face="Calibri" size=2><?php echo number_format($row[field12],2,".","'"); ?></font></td>
+	</tr>
+</table>
+
+<?php } ?>
+
+</div>

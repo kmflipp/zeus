@@ -1,0 +1,150 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+
+<title>Polizza di assicurazione</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:DoNotHyphenateCaps/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>9.35 pt</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>9.35 pt</w:DrawingGridVerticalSpacing>
+ </w:WordDocument>
+</xml><![endif]-->
+
+<style>
+    @page Section1
+    {size:8.5in 11.0in;
+     margin:0.7in 0.7in 0.7in 0.7in ;
+     mso-header-margin:.0in;
+     mso-footer-margin:1.0in; mso-paper-source:0;
+		 mso-page-orientation: portrait;  
+    div.Section1
+    {page:Section1;}
+</style>
+</head>
+
+<?php
+$sql= "SELECT * FROM [RASINI-APP".chr(92)."RVA_DB].RVA_PROD.dbo.CLIENTI WHERE COD = '$row[field3]'";
+$rscli = $db->sql_query($sql);
+$rowcli = $db->sql_fetchrow($rscli);
+?>
+
+<body  style='tab-interval:.5in'>
+<div class="Section1">
+
+<img src="https://zeus.rvasa.ch/template/proposal_form_1.jpg">
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:normal'><b style='mso-bidi-font-weight:normal'>Before any question is answered read carefully the declaration at the end of this proposal witch you are required to sign. Answer all questions in full. Tick Yes or No boxes.</b></p>
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:normal'><i style='mso-bidi-font-style:normal'>Avant de repondre au qustions, nous vous prions de bien lire la declaration qui se trouve a fin decette proposition, qui doit e sign. Rendez entiment aux questions. Croisez les cases Oui o Non.</i></p>
+
+<p class=MsoListParagraph align=left><b style='mso-bidi-font-weight:normal'>
+1. PROPOSER / <i style='mso-bidi-font-style:normal'>PROPOSANT</i></b></p>
+
+<table width=100%>
+	<tr>
+		<td width=34% align=center>Mr-Mrs-Miss<br><i>M - Mme - Mademoiselle</i></td>
+		<td width=33% align=center>Surname<br><i>Nom</i></td>
+		<td width=33% align=center>First Name<br><i>Prenom</i></td>
+	</tr>
+	<tr>
+		<td width=34% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br>&nbsp;</td>
+		<td width=33% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;><?php echo $rowcli[NOME]; ?></td>
+		<td width=33% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;><?php echo $rowcli[COGNOME]; ?></td>
+	</tr>
+</table>
+
+<table width=90%>
+	<tr>
+		<td width=90% align=center>Address (for the correspondence)<br><i>Adresse (pour la correspondence)</i></td>
+	</tr>
+	<tr>
+		<td width=90% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br><?php echo "$rowcli[INDIRIZZO], $rowcli[CAP] $rowcli[CITTA] ($rowcli[STATO])"; ?></td>
+	</tr>
+</table>
+
+<table width=100%>
+	<tr>
+		<td width=50% align=center>Age of proposer<br><i>Age du proposant</i></td>
+		<td width=50% align=center>Nationality of proposer<br><i>Nationalite di proposant</i></td>
+	</tr>
+	<tr>
+		<td width=50% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br>&nbsp;</td>
+		<td width=50% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan=2 width=100% align=center>Occupation of proposer <i>Profession du proposant</i></td>
+	</tr>
+	<tr>
+		<td colspan=2 width=100% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br>&nbsp;</td>
+	</tr>
+</table>
+
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>2. LOCATION OF ITEMS TO BE INSURED / <i style='mso-bidi-font-style:normal'>LOCATION DES ARTICLES A ASSURER</i></b></p>
+
+<table width=90%>
+	<tr>
+		<td width=90% align=center>Address<br><i>Adresse</i></td>
+	</tr>
+	<tr>
+		<td width=90% align=center style=border-style:solid;border-bottom:2px;border-top:0px;border-left:0px;border-right:0px;>&nbsp;<br>&nbsp;</td>
+	</tr>
+</table>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>If you wish to include transits (for additional premium) tick the appropriate box.</b></p>
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'>Si vous darez inclure le transport (prime additionnelle),croisez la case appropriate</i></p>
+
+<table width=100%>
+	<tr>
+		<td width=50% align=center>Domestic<br><i>Localment</i></td>
+		<td width=50% align=center>Worldwide<br><i>Mone Entier</i></td>
+	</tr>
+	<tr>
+		<td width=50% align=center><input type=checkbox></td>
+		<td width=50% align=center><input type=checkbox></td>
+	</tr>
+</table>
+
+</div>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_3.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_4.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_5.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_6.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_7.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_8.jpg" width=615 height=926>
+
+<br clear=all style='mso-special-character:line-break;page-break-before:always'>
+<img src="https://zeus.rvasa.ch/template/proposal_form_9.jpg" width=615 height=926>

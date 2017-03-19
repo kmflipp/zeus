@@ -1,0 +1,572 @@
+<script type="text/javascript" src="includes/calendar.js"></script>
+<script type="text/javascript" src="includes/calendar-it.js"></script>
+<script type="text/javascript">
+
+var oldLink = null;
+function setActiveStyleSheet(link, title) {
+  var i, a, main;
+  for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+    if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
+      a.disabled = true;
+      if(a.getAttribute("title") == title) a.disabled = false;
+    }
+  }
+  if (oldLink) oldLink.style.fontWeight = 'normal';
+  oldLink = link;
+  link.style.fontWeight = 'bold';
+  return false;
+}
+
+// This function gets called when the end-user clicks on some date.
+function selected(cal, date) {
+  cal.sel.value = date; // just update the date in the input field.
+  if (cal.dateClicked && (cal.sel.id == "sel1" || cal.sel.id == "sel3"))
+    cal.callCloseHandler();
+}
+
+function closeHandler(cal) {
+  cal.hide();                        // hide the calendar
+//  cal.destroy();
+  _dynarch_popupCalendar = null;
+}
+
+function showCalendar(id, format, showsTime, showsOtherMonths) {
+  var el = document.getElementById(id);
+  if (_dynarch_popupCalendar != null) {
+    // we already have some calendar created
+    _dynarch_popupCalendar.hide();                 // so we hide it first.
+  } else {
+    // first-time call, create the calendar.
+    var cal = new Calendar(1, null, selected, closeHandler);
+    // uncomment the following line to hide the week numbers
+    // cal.weekNumbers = false;
+    if (typeof showsTime == "string") {
+      cal.showsTime = true;
+      cal.time24 = (showsTime == "24");
+    }
+    if (showsOtherMonths) {
+      cal.showsOtherMonths = true;
+    }
+    _dynarch_popupCalendar = cal;                  // remember it in the global var
+    cal.setRange(1900, 2070);        // min/max year allowed.
+    cal.create();
+  }
+  _dynarch_popupCalendar.setDateFormat(format);    // set the specified date format
+  _dynarch_popupCalendar.parseDate(el.value);      // try to parse the text in field
+  _dynarch_popupCalendar.sel = el;                 // inform it what input field we use
+
+  _dynarch_popupCalendar.showAtElement(el.nextSibling, "Br");        // show the calendar
+
+  return false;
+}
+
+var MINUTE = 60 * 1000;
+var HOUR = 60 * MINUTE;
+var DAY = 24 * HOUR;
+var WEEK = 7 * DAY;
+
+function isDisabled(date) {
+  var today = new Date();
+  return (Math.abs(date.getTime() - today.getTime()) / DAY) > 10;
+}
+
+function flatSelected(cal, date) {
+  var el = document.getElementById("preview");
+  el.innerHTML = date;
+}
+
+function showFlatCalendar() {
+  var parent = document.getElementById("display");
+
+  var cal = new Calendar(0, null, flatSelected);
+
+  cal.weekNumbers = false;
+
+  cal.setDisabledHandler(isDisabled);
+  cal.setDateFormat("%A, %B %e");
+
+  cal.create(parent);
+
+  cal.show();
+}
+
+function stampa(id) {
+	window.location = "gestionale.php?name=lloyds&subname=offerte&act=explode&view=stampa&id="+id
+}
+
+function ricalcola() {
+	window.location.reload();
+}
+
+function consolida(id) {
+	x=confirm("Questa funzione bloccherà definitivamente l'offerta e creerà una polizza che non potrà essere eliminata (in caso di errori contattare l'assistenza). Si desidera continuare?");
+	if (x) window.location = "/consolida.php?idofferta="+id;
+}
+
+</script>
+
+
+<script language=JavaScript>
+function getPageLeft (el) {
+	var left = 0;
+	do 
+	left += el.offsetLeft;
+	while ((el = el.offsetParent));
+	return left;
+}
+function getPageTop (el) {
+	var top = 0;
+	do 
+	top += el.offsetTop;
+	while ((el = el.offsetParent));
+	return top;
+}
+function select_innerHTML(objeto,innerHTML){
+  objeto.innerHTML = ""
+  var selTemp = document.createElement("micoxselect")
+  var opt;
+  selTemp.id="micoxselect1"
+  document.body.appendChild(selTemp)
+  selTemp = document.getElementById("micoxselect1")
+  selTemp.style.display="none"
+  if(innerHTML.toLowerCase().indexOf("<option")<0){//se não é option eu converto
+      innerHTML = "<option>" + innerHTML + "</option>"
+  }
+  innerHTML = innerHTML.toLowerCase().replace(/<option/g,"<span").replace(/<\/option/g,"</span")
+  selTemp.innerHTML = innerHTML.toUpperCase();
+    
+  
+  for(var i=0;i<selTemp.childNodes.length;i++){
+  var spantemp = selTemp.childNodes[i];
+  
+        if(spantemp.tagName){     
+            opt = document.createElement("OPTION")
+    
+   if(document.all){ //IE
+    objeto.add(opt)
+   }else{
+    objeto.appendChild(opt)
+   }       
+    
+   //getting attributes
+   for(var j=0; j<spantemp.attributes.length ; j++){
+    var attrName = spantemp.attributes[j].nodeName;
+    var attrVal = spantemp.attributes[j].nodeValue;
+    if(attrVal){
+     try{
+      opt.setAttribute(attrName,attrVal);
+      opt.setAttributeNode(spantemp.attributes[j].cloneNode(true));
+     }catch(e){}
+    }
+   }
+   //getting styles
+   if(spantemp.style){
+    for(var y in spantemp.style){
+     try{opt.style[y] = spantemp.style[y];}catch(e){}
+    }
+   }
+   //value and text
+   opt.value = spantemp.getAttribute("value")
+   opt.text = spantemp.innerHTML
+   //IE
+   opt.selected = spantemp.getAttribute('selected');
+   opt.className = spantemp.className;
+  } 
+ }    
+ document.body.removeChild(selTemp)
+ selTemp = null
+}
+
+function query_now_field3(field) {
+	ricerca=document.getElementById("field3").value;
+	if (ricerca!='') {
+	  xmlhttp=new XMLHttpRequest();
+	  xmlhttp.onreadystatechange=function()
+	  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {
+		  	select_innerHTML(document.getElementById("field3_select"),xmlhttp.responseText);
+		  }
+	  }
+	  xmlhttp.open("GET","gestionale_offerte.php?ricerca="+ricerca+"&field="+field,true);
+	  xmlhttp.send();
+	}
+}
+function query_now_field4(field) {
+	ricerca=document.getElementById("field4").value;
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	select_innerHTML(document.getElementById("field4_select"),xmlhttp.responseText);
+	  }
+  }
+  xmlhttp.open("GET","gestionale_offerte.php?ricerca="+ricerca+"&field="+field,true);
+  xmlhttp.send();
+}
+function query_now_field5(id) {
+	valore=document.getElementById("field5").value;
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById("field5").style.backgroundColor = 'green';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_field5.php?id="+id+"&valore="+valore,true);
+  xmlhttp.send();
+}
+function query_now_field17(id) {
+	valore=document.getElementById("field17").value;
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById("field17").style.backgroundColor = 'green';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_field17.php?id="+id+"&valore="+valore,true);
+  xmlhttp.send();
+}
+function query_now_fieldc(id,blocca) {
+	if (blocca==0) {
+		valore1 = document.getElementById('sel3').value;
+		valore2 = document.getElementById('sel4').value;
+		valore3 = document.getElementById('sel5').value;
+	
+	  xmlhttp=new XMLHttpRequest();
+	  xmlhttp.onreadystatechange=function()
+	  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {
+		  	document.getElementById('field6').style.backgroundColor = 'lightgreen';
+		  	document.getElementById('field10').style.backgroundColor = 'lightgreen';
+		  	document.getElementById('data').style.backgroundColor = 'lightgreen';
+		  	window.location="gestionale.php?name=lloyds&subname=offerte&act=explode&id="+id;
+		  }
+	  }
+	  xmlhttp.open("GET","gestionale_fieldc.php?field6="+valore1+"&id="+id+"&field10="+valore2+"&data="+valore3,true);
+	  xmlhttp.send();
+	}
+}
+function query_now_fieldf(id) {
+	franch  = document.getElementById('franchigia').value;
+	franch = franch.replace(/\n\r?/g, '<br>');
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById('franchigia').style.backgroundColor = 'lightgreen';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_fieldf.php?field=franchigia&id="+id+"&valore="+franch,true);
+  xmlhttp.send();
+}
+function query_now_fieldar(id) {
+	anno  = document.getElementById('anno_rinnovo').value;
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById('anno_rinnovo').style.backgroundColor = 'lightgreen';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_fieldf.php?field=anno_rinnovo&id="+id+"&valore="+anno,true);
+  xmlhttp.send();
+}
+function query_now_fieldn(id) {
+	testo = document.getElementById('note').value;
+	testo = testo.replace(/\n\r?/g, '<br>');
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById('note').style.backgroundColor = 'lightgreen';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_fieldf.php?field=note&id="+id+"&valore="+testo,true);
+  xmlhttp.send();
+}
+function nuova_p(field3,field4,company) {
+	name='lloyds';
+	if (company='1') { name='lloyds' }
+	if (company='2') { name='kiln' }
+	window.location='gestionale.php?name='+name+'&subname=offerte&act=new';
+}
+function rinnovi(id,view,scrolltop) {
+	if (document.getElementById('rinnovo').checked) {
+		stato=1;
+	}else{
+		stato=0;
+	}
+	window.location='gestionale.php?name=lloyds&subname=offerte&act=sav&id='+id+'&field=rinnovo&value='+stato+'&view='+view+'&scrolltop='+scrolltop;
+}
+function stampa_proposta(id) {
+	window.open('gestionale.php?name=offerte&subname=lloyds&act=explode&id='+id+'&nomefile=template/rva1.htm','_blank');
+	//window.location='gestionale.php?name=offerte&subname=lloyds&act=explode&id='+id+'&stampa=1';
+}
+function stampa_addendum(id) {
+	window.open('gestionale.php?name=offerte&subname=lloyds&act=explode&id='+id+'&nomefile=template/rva1_addendum.htm','_blank');
+	//window.location='gestionale.php?name=offerte&subname=lloyds&act=explode&id='+id+'&stampa=1';
+}
+
+</script>
+
+
+<script language=Javascript>
+function attiva(pippo,idcliente,idpolizza,act) {
+	if (pippo.checked) {
+		location.href='gestionale.php?name=lloyds&subname=polizze&act='+act+'&id='+idcliente+'&elabora=on&attiva=1&idpolizza='+idpolizza;
+	}else{
+		location.href='gestionale.php?name=lloyds&subname=polizze&act='+act+'&id='+idcliente+'&elabora=on&attiva=0&idpolizza='+idpolizza;
+	}
+}	
+function getPageLeft (el) {
+	var left = 0;
+	do 
+	left += el.offsetLeft;
+	while ((el = el.offsetParent));
+	return left;
+}
+function getPageTop (el) {
+	var top = 0;
+	do 
+	top += el.offsetTop;
+	while ((el = el.offsetParent));
+	return top;
+}
+function select_innerHTML(objeto,innerHTML){
+  objeto.innerHTML = ""
+  var selTemp = document.createElement("micoxselect")
+  var opt;
+  selTemp.id="micoxselect1"
+  document.body.appendChild(selTemp)
+  selTemp = document.getElementById("micoxselect1")
+  selTemp.style.display="none"
+  if(innerHTML.toLowerCase().indexOf("<option")<0){//se não é option eu converto
+      innerHTML = "<option>" + innerHTML + "</option>"
+  }
+  innerHTML = innerHTML.toLowerCase().replace(/<option/g,"<span").replace(/<\/option/g,"</span")
+  selTemp.innerHTML = innerHTML.toUpperCase();
+    
+  
+  for(var i=0;i<selTemp.childNodes.length;i++){
+  var spantemp = selTemp.childNodes[i];
+  
+        if(spantemp.tagName){     
+            opt = document.createElement("OPTION")
+    
+   if(document.all){ //IE
+    objeto.add(opt)
+   }else{
+    objeto.appendChild(opt)
+   }       
+    
+   //getting attributes
+   for(var j=0; j<spantemp.attributes.length ; j++){
+    var attrName = spantemp.attributes[j].nodeName;
+    var attrVal = spantemp.attributes[j].nodeValue;
+    if(attrVal){
+     try{
+      opt.setAttribute(attrName,attrVal);
+      opt.setAttributeNode(spantemp.attributes[j].cloneNode(true));
+     }catch(e){}
+    }
+   }
+   //getting styles
+   if(spantemp.style){
+    for(var y in spantemp.style){
+     try{opt.style[y] = spantemp.style[y];}catch(e){}
+    }
+   }
+   //value and text
+   opt.value = spantemp.getAttribute("value")
+   opt.text = spantemp.innerHTML
+   //IE
+   opt.selected = spantemp.getAttribute('selected');
+   opt.className = spantemp.className;
+  } 
+ }    
+ document.body.removeChild(selTemp)
+ selTemp = null
+}
+function query_now_field3(field) {
+	ricerca=document.getElementById("field3").value;
+	if (ricerca!='') {
+	  xmlhttp=new XMLHttpRequest();
+	  xmlhttp.onreadystatechange=function()
+	  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		  {
+		  	select_innerHTML(document.getElementById("field3_select"),xmlhttp.responseText);
+		  }
+	  }
+	  xmlhttp.open("GET","gestionale_polizze.php?ricerca="+ricerca+"&field="+field,true);
+	  xmlhttp.send();
+	}
+}
+function query_now_field4(field) {
+	ricerca=document.getElementById("field4").value;
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	select_innerHTML(document.getElementById("field4_select"),xmlhttp.responseText);
+	  }
+  }
+  xmlhttp.open("GET","gestionale_polizze.php?ricerca="+ricerca+"&field="+field,true);
+  xmlhttp.send();
+}
+</script>
+
+<script language=Javascript>
+function attiva(pippo,idcliente,idpolizza) {
+	if (pippo.checked) {
+		location.href='gestionale.php?name=clienti&act=explode&id='+idcliente+'&elabora=on&attiva=1&idpolizza='+idpolizza;
+	}else{
+		location.href='gestionale.php?name=clienti&act=explode&id='+idcliente+'&elabora=on&attiva=0&idpolizza='+idpolizza;
+	}
+}	
+</script>
+<script language=JavaScript>
+
+function query_now_a(tabindex,idcategoria,idofferta,id) {
+	var floatobj=document.getElementById("dhtmlfloatie1");
+	floatobj.style.display="none";
+	var floatobj=document.getElementById("dhtmlfloatie2");
+	floatobj.style.display="none";
+
+	testo = document.getElementById(tabindex).value;
+	testo = testo.replace(/\n\r?/g, '<br>');
+
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById(tabindex).style.backgroundColor = 'lightgreen';
+			var floatobj=document.getElementById("dhtmlfloatie1");
+			floatobj.style.display="block";
+	  }
+  }
+  xmlhttp.open('GET','gestionale_query.php?id='+id+'&idcategoria='+idcategoria+'&field=description&valore='+testo+'&idofferta='+idofferta);
+  xmlhttp.send();
+}
+function query_now_fieldn(id) {
+	testo = document.getElementById('note').value;
+	testo = testo.replace(/\n\r?/g, '<br>');
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function()
+  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	  {
+	  	document.getElementById('note').style.backgroundColor = 'lightgreen';
+	  }
+  }
+  xmlhttp.open("GET","gestionale_fieldf.php?field=note&id="+id+"&valore="+testo,true);
+  xmlhttp.send();
+}
+</script>
+<script>
+function beenornot_pers(id,idofferta,cgaid,aggcgaid,nome,cognome,nascita) {
+	valore='';
+	if (aggcgaid=='15' || aggcgaid=='16' || aggcgaid=='17') {
+		valore = document.getElementById('franchigia').value;
+		var n=valore.indexOf("Termine ");
+		if (n==-1) {
+			valore = valore + "\n\rTermine d'attesa: per infortuni 4 settimane\n\rWaiting period: 4 weeks";
+			document.getElementById('franchigia').value=valore;
+			valore = valore.replace(/\n\r?/g, '<br>');
+		}else{
+			valore='';
+		}
+	}
+	if (aggcgaid=='13' || aggcgaid=='20' || aggcgaid=='29') {
+		valore = document.getElementById('franchigia').value;
+		var n=valore.indexOf("Spese mediche");
+		if (n==-1) {
+			valore = valore + "\n\rSpese mediche/Medical Expenses: CHF 2'500.-";
+			document.getElementById('franchigia').value=valore;
+			valore = valore.replace(/\n\r?/g, '<br>');
+		}else{
+			valore='';
+		}
+	}
+	if (document.getElementById(id).checked) {
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azione=aggiungi&view=editavanzato&idcopertura='+aggcgaid+'&nome='+nome+'&cognome='+cognome+'&nascita='+nascita+'&scrolltop='+document.getElementById('offerte').scrollTop+'&franchigia='+valore;
+	}else{
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azione=delete&view=editavanzato&idpersona='+cgaid+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}
+}
+function beenornot_coperture(idcopertura,idofferta,idcoperturetabellaofferte,group) {
+	valore='';
+	if (document.getElementById(idcopertura).checked) {
+		if (document.getElementById('group').value=='') {
+			alert("Insert group name first");
+			document.getElementById(idcopertura).checked=false;
+		}else{
+			window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azione=aggiungi_copertura&view=editavanzato&group='+document.getElementById('group').value+'&idcopertura='+idcopertura+'&scrolltop='+document.getElementById('offerte').scrollTop;
+		}
+	}else{
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azione=delete_copertura&view=editavanzato&idcoperturetabellaofferte='+idcoperturetabellaofferte+'&group='+group+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}
+}
+function calcola1(id) {
+	indexsomma=id-1;
+	indextasso=id;
+	id++;
+	document.getElementById('text'+id).value=document.getElementById('text'+indexsomma).value*document.getElementById('text'+indextasso).value/100;
+}
+function calcola(id) {
+	indexsomma=id-1;
+	indextasso=id;
+	id++;
+	document.getElementById(id).value=document.getElementById(indexsomma).value*document.getElementById(indextasso).value/100;
+}
+
+</script>
+<script>
+function beensornot(id,questo,idofferta,cgaid,aggcgaid) {
+	if (document.getElementById(id).checked) {
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azioni=aggiungicondizione&view=editavanzato&condizioneid='+aggcgaid+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}else{
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azioni=eliminacondizione&view=editavanzato&condizioneid='+cgaid+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}
+}
+</script>
+<script>
+function beenornot1(id,questo,idofferta,domandeid,aggdomandeid) {
+	if (document.getElementById(id).checked) {
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azioni=aggiungi&domandeid='+aggdomandeid+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}else{
+		window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id='+idofferta+'&azioni=elimina&domandeid='+domandeid+'&scrolltop='+document.getElementById('offerte').scrollTop;
+	}
+}
+
+function vai(formid) {
+	var hidden = document.createElement("input");
+	hidden.type = "hidden";
+	hidden.name = "scrolltop";
+	hidden.value = document.getElementById('offerte').scrollTop;
+	var f = document.getElementById(formid);
+	f.appendChild(hidden);
+	f.submit();
+}
+
+function vai1(formid) {
+	var hidden = document.createElement("input");
+	hidden.type = "hidden";
+	hidden.name = "scrolltop";
+	hidden.value = document.getElementById('offerte').scrollTop;
+	var g = document.getElementById(formid);
+	g.appendChild(hidden);
+	g.submit();
+}
+</script>
