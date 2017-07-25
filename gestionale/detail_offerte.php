@@ -15,7 +15,7 @@ $sql = "SELECT * FROM nuke_offerte WHERE id = '" . $id_offerte . "'";
 $rs = $db->sql_query($sql);
 $row = $db->sql_fetchrow($rs);
 $numero_offerta = $row[field1]."/".$row[id];
-$sql = "SELECT * FROM CLIENTI WHERE COD = '" . $row[field3] . "'";
+$sql = "SELECT * FROM nuke_clienti WHERE id = '" . $row[field3] . "'";
 $rs = $db->sql_query($sql);
 $row = $db->sql_fetchrow($rs);
 $nominativo = $row[title]." ".$row[nome]." ".$row[cognome]." (".$row[ragione_sociale].")";
@@ -98,7 +98,7 @@ while ($row = $db->sql_fetchrow($rs))
 		$entita = $db->sql_fetchrow($rs_entita);
 		echo $entita[field2]." / ".$entita[field4];
 		echo '</font></td>';
- 		echo '<td align=center valign=middle><font face=verdana size=2>CHF '.number_format($row[field3],2,",",".").'</font></td>';
+		echo '<td align=center valign=middle><font face=verdana size=2>CHF '.number_format($row[field3],2,",",".").'</font></td>';
 		echo '<td align=center valign=middle><font face=verdana size=2>CHF '.number_format($row[field4],2,",",".").'</font></td>';
 		echo "<td align=center valign=middle><font face=verdana size=2><a href=gestionale.php?name=detail_offerte&act=del&id_offerte=" . $row[field1] . "&id=" . $row[id] . " " . $confirm . "><img border=0 src=immagini/del.ico></a></td>";
 	echo '</tr>';

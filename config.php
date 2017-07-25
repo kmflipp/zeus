@@ -15,7 +15,7 @@
 if (stristr(htmlentities($_SERVER['PHP_SELF']), "config.php")) {
 	Header("Location: index.php");
 	die();
-} 
+}
 
 ######################################################################
 # Database & System Config
@@ -61,21 +61,26 @@ if (stristr(htmlentities($_SERVER['PHP_SELF']), "config.php")) {
 ######################################################################
 
 
-$dbhost = "ir-prd-db.cpncxrdhbhsl.eu-west-1.rds.amazonaws.com";
-$dbuname = "admin";
-$dbpass = "Rodney8472";
-$dbname = "assimediadb";
+$dbhost = "WIN-PIPI40BT53B\ZEUS1";
+$dbuname = "zeus";
+$dbpass = "11idgzB1";
+$dbname = "RVA";
 $dbtype = "mssql";
 
+#$dbhost = "localhost";
+#$dbuname = "root";
+#$dbpass = "11idgzb1";
+#$dbname = "RVA";
+#$dbtype = "MySQL";
 
 $prefix = "nuke";
 $user_prefix = "nuke";
-$sitekey = "SwSDsyrgF23$$5%*ddw3$D-2Df/%(-0394ï¿½$%/";
+$sitekey = "SwSDsyrgF23$$5%*ddw3$D-2Df/%(-0394·$%/";
 $gfx_chk = 0;
 $subscription_url = "";
 $admin_file = "admin";
 $tipath = "images/topics/";
-$nuke_editor = 0;
+$nuke_editor = 1;
 $display_errors = false;
 
 /**********************************************************************/
@@ -97,7 +102,7 @@ $prefix = empty($user_prefix) ? $prefix : $user_prefix;
 $reasons = array("As Is","Offtopic","Flamebait","Troll","Redundant","Insighful","Interesting","Informative","Funny","Overrated","Underrated");
 $badreasons = 4;
 $AllowableHTML = array("b"=>1,"i"=>1,"strike"=>1,"div"=>2,"u"=>1,"a"=>2,"em"=>1,"br"=>1,"strong"=>1,"blockquote"=>1,"tt"=>1,"li"=>1,"ol"=>1,"ul"=>1);
-$CensorList = array("fuck");
+$CensorList = array("fuck","cunt","fucker","fucking","pussy","cock","c0ck","cum","twat","clit","bitch","fuk","fuking","motherfucker");
 
 //***************************************************************
 // IF YOU WANT TO LEGALY REMOVE ANY COPYRIGHT NOTICES PLAY FAIR AND CHECK: http://phpnuke.org/modules.php?name=Commercial_License

@@ -51,8 +51,8 @@ class sql_db
 		$this->server = $sqlserver;
 		$this->dbname = $database;
 
-		$serverName = "(local)\ZEUS";
-		$connectionInfo = array( "Database"=>"RVA", "UID"=>"zeus", "PWD"=>"zeus+6900!");
+		$serverName = "(local)\ZEUS1";
+		$connectionInfo = array( "Database"=>"RVA", "UID"=>"zeus", "PWD"=>"11idgzB1");
 		$conn = sqlsrv_connect($serverName, $connectionInfo);
 		
 		if( $conn === false )
@@ -123,7 +123,7 @@ class sql_db
 	//
 	// Query method
 	//
-	function sql_query_view($query)
+	function sql_query1($query = "", $transaction = FALSE)
 	{
 		$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 		$params = array();
@@ -131,15 +131,6 @@ class sql_db
 		
 		return $rs;
 	}
-
-	function sql_query1($query, $transaction = FALSE)
-	{
-		$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
-		$params = array();
-		$rs = sqlsrv_query($this->db_connect_id,$query,$params,$options);
-		return $rs;
-	}
-
 	
 	function sql_query($query = "", $transaction = FALSE)
 	{

@@ -9,12 +9,9 @@ $idofferta = $_GET[idofferta];
 $id = $_GET[id];
 $premio = $_GET[premio];
 
-$valore = str_replace("'","&lsquo;",$valore);
-$valore = str_replace('"','&lsquo;',$valore);
-
 //inserisco il dato
 if ($id=='') $sql1 = "UPDATE nuke_offerte_detail1 SET $field='$valore' WHERE idcategoria='$idcategoria' AND idofferta='$idofferta'";
-if ($id!='') $sql1 = "UPDATE nuke_offerte_detail1 SET $field='$valore' WHERE id='$id'";
+if ($id!='') $sql1 = "UPDATE nuke_offerte_detail1 SET $field='$valore' WHERE id=$id";
 $result = $db->sql_query($sql1);
 if ($premio!='') {
 	if ($id=='') $sql2 = "UPDATE nuke_offerte_detail1 SET premio='$premio' WHERE idcategoria='$idcategoria' AND idofferta='$idofferta'";
@@ -22,11 +19,11 @@ if ($premio!='') {
 	$result = $db->sql_query($sql2);
 }
 
-$sql3 = "update nuke_offerte set field8=(select sum(cast(somma as int)) from nuke_offerte_detail1 where idofferta='$id') where id='$id'";
-$result = $db->sql_query1($sql3);
+$sql3 = "update nuke_offerte set field8=(select sum(somma) from nuke_offerte_detail1 where idofferta='$idofferta') where id='$idofferta'";
+$result = $db->sql_query($sql3);
 
-$sql4 = "update nuke_offerte set field12=(select sum(cast(premio as decimal(18,2))) from nuke_offerte_detail1 where idofferta='$id') where id='$id'";
-$result = $db->sql_query1($sql4);
+$sql4 = "update nuke_offerte set field12=(select sum(premio) from nuke_offerte_detail1 where idofferta='$idofferta') where id='$idofferta'";
+$result = $db->sql_query($sql4);
 
 $sql = "SELECT * FROM nuke_offerte WHERE id='$idofferta'";
 $rs = $db->sql_query($sql);

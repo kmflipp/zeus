@@ -1,0 +1,1373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="55bf8233-3e9c-4c1f-83d4-b8c0f2653a4b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/db.php" afterPath="$PROJECT_DIR$/db/db.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/mssql.php" afterPath="$PROJECT_DIR$/db/mssql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/mysql.php" afterPath="$PROJECT_DIR$/db/mysql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gestionale.php" afterPath="$PROJECT_DIR$/gestionale.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainfile.php" afterPath="$PROJECT_DIR$/mainfile.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="62" column="22" lean-forward="true" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+              <folding>
+                <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainfile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mainfile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+                <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+                <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+                <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+                <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+                <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+                <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+                <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+                <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+                <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+                <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+                <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+                <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+                <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+                <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+                <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+                <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+              <folding>
+                <marker date="1499168622000" expanded="true" signature="61:86" ph="SELECT * FRO... nuke_config" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/mysql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2836">
+              <caret line="199" column="2" lean-forward="false" selection-start-line="199" selection-start-column="2" selection-end-line="199" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestionale.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gestionale.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+              <folding>
+                <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+                <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>config</find>
+      <find>ciao</find>
+      <find>db.</find>
+      <find>select</find>
+      <find>sql_query</find>
+      <find>db.php</find>
+      <find>$</find>
+      <find>$prefix</find>
+      <find>$_GET[name]</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/db/mssql.php" />
+        <option value="$PROJECT_DIR$/config.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/db/mysql.php" />
+        <option value="$PROJECT_DIR$/db/db.php" />
+        <option value="$PROJECT_DIR$/gestionale.php" />
+        <option value="$PROJECT_DIR$/mainfile.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeus" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="FullScreen" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55bf8233-3e9c-4c1f-83d4-b8c0f2653a4b" name="Default" comment="" />
+      <created>1491403496440</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1491403496440</updated>
+      <workItem from="1491403497642" duration="3695000" />
+      <workItem from="1491945187416" duration="9575000" />
+      <workItem from="1492001375715" duration="2867000" />
+      <workItem from="1492191645937" duration="559000" />
+      <workItem from="1492521817493" duration="2071000" />
+      <workItem from="1494277944051" duration="505000" />
+      <workItem from="1494311726010" duration="551000" />
+      <workItem from="1494329155103" duration="498000" />
+      <workItem from="1494350577097" duration="275000" />
+      <workItem from="1494366151855" duration="52000" />
+      <workItem from="1496524349283" duration="181000" />
+      <workItem from="1496524575059" duration="659000" />
+      <workItem from="1496572360101" duration="1329000" />
+      <workItem from="1496588473334" duration="1206000" />
+      <workItem from="1496647190263" duration="310000" />
+      <workItem from="1499157995074" duration="3211000" />
+      <workItem from="1499414030071" duration="46000" />
+      <workItem from="1500973862362" duration="1649000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="29239000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22202381" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15852442" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22095">
+          <caret line="1473" column="2" lean-forward="false" selection-start-line="1473" selection-start-column="2" selection-end-line="1473" selection-end-column="2" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6405">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding>
+            <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+            <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding>
+            <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+            <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22095">
+          <caret line="1473" column="2" lean-forward="true" selection-start-line="1473" selection-start-column="2" selection-end-line="1473" selection-end-column="2" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+            <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+            <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="427" column="0" lean-forward="false" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2505">
+          <caret line="167" column="1" lean-forward="true" selection-start-line="167" selection-start-column="1" selection-end-line="167" selection-end-column="1" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="427" column="0" lean-forward="true" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="67" column="18" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="67" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysql/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="54" column="9" lean-forward="false" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mssql/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="29" column="9" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mssql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding>
+            <marker date="1499168622000" expanded="true" signature="61:86" ph="SELECT * FRO... nuke_config" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2836">
+          <caret line="199" column="2" lean-forward="false" selection-start-line="199" selection-start-column="2" selection-end-line="199" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="62" column="22" lean-forward="true" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale_field5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <marker date="1490686139000" expanded="true" signature="142:197" ph="UPDATE nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <marker date="1500975751000" expanded="true" signature="131:144" ph="SELECT * FRO... " />
+            <marker date="1500975751000" expanded="true" signature="131:156" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="3740:3792" ph="SELECT pwd F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="4507:4576" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5235:5297" ph="SELECT point... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5469:5530" ph="SELECT mod_g... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="5713:5772" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6327:6359" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="6429:6488" ph="SELECT point... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="7068:7120" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="8536:8715" ph="SELECT bid, " />
+            <marker date="1500975751000" expanded="true" signature="9470:9517" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="10573:10662" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="14097:14149" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="14186:14243" ph="SELECT time " />
+            <marker date="1500975751000" expanded="true" signature="14588:14696" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="15368:16061" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="15392:16052" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16180:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16297:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="16396:16417" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="17287:17540" ph="SELECT s.sid... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="17883:17959" ph="select topic... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="18620:18696" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="19280:19371" ph="SELECT * FRO... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="25548:25607" ph="SELECT url, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="26670:26734" ph="SELECT title... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27094:27125" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27199:27207" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27222:27228" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27350:27387" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27420:27428" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27443:27449" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27564:27603" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27654:27717" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27768:27831" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="27864:27872" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="27887:27893" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="27990:27998" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28013:28019" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28140:28148" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28163:28169" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28304:28351" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28402:28473" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28524:28595" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="28628:28636" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28651:28657" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28762:28770" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28785:28791" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="28915:28923" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="28938:28944" ph=" " />
+            <marker date="1500975751000" expanded="true" signature="30913:30981" ph="SELECT ubloc... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31301:31452" ph="SELECT t.top... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="31784:31866" ph="SELECT title... " />
+            <marker date="1500975751000" expanded="true" signature="33722:33730" ph="·" />
+            <marker date="1500975751000" expanded="true" signature="34871:34915" ph="SELECT anid,... " />
+            <marker date="1500975751000" expanded="true" signature="35296:35349" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="35448:35510" ph="SELECT sid F... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="36367:36418" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="36444:36679" ph="INSERT INTO ${$prefix}... " />
+            <marker date="1500975751000" expanded="true" signature="37303:37375" ph="SELECT broad... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="37915:38025" ph="SELECT mid, " />
+            <marker date="1500975751000" expanded="true" signature="39028:39069" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="39122:39161" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="39217:39273" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="41331:41396" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="41661:41756" ph="DELETE FROM " />
+            <marker date="1500975751000" expanded="true" signature="42035:42154" ph="SELECT user_... ${$user_prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42496:42570" ph="SELECT * FRO... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="42774:42904" ph="SELECT bid, ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="43286:43410" ph="SELECT cid, " />
+            <marker date="1500975751000" expanded="true" signature="44017:44093" ph="SELECT name,... ${$prefix}" />
+            <marker date="1500975751000" expanded="true" signature="45237:45802" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45305:45788" ph="..." />
+            <marker date="1500975751000" expanded="true" signature="45629:45774" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gestionale.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <marker date="1500975550000" expanded="true" signature="431:474" ph="SELECT * FRO... nuke_polizze" />
+            <marker date="1500975550000" expanded="true" signature="742:793" ph="update nuke_... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="52" lean-forward="false" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <folding>
+            <marker date="1500975982000" expanded="true" signature="210:250" ph="SELECT main_... ${$prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

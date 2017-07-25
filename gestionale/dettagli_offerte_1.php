@@ -1,216 +1,207 @@
+<script language=JavaScript>
+
+function CreateXmlHttpReq(handler) {
+  var xmlhttp = null;
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = handler;
+  return xmlhttp;
+}
+
+function myHandler() {
+  if (myRequest.readyState == 4 && myRequest.status == 200) {
+   	var n=myRequest.responseText.split(",");
+	  if (n[1]=='1') {
+			var floatobj=document.getElementById("dhtmlfloatie1");
+			floatobj.style.display="block";
+	  }
+	  if (n[1]=='0') {
+			var floatobj=document.getElementById("dhtmlfloatie2");
+			floatobj.style.display="block";
+	  }
+  }
+}
+
+function query_now(tabindex,event,idcategoria,field,valore,idofferta,id) {
+	var floatobj=document.getElementById("dhtmlfloatie1");
+	floatobj.style.display="none";
+	var floatobj=document.getElementById("dhtmlfloatie2");
+	floatobj.style.display="none";
+	if (event.keyCode=='9' || event.keyCode=='13') {
+		testopremio='';
+		if (field=='tasso') {
+			indexsomma=tabindex-1;
+			indexpremio=tabindex+1;
+			document.getElementById(indexpremio).value=document.getElementById(indexsomma).value*document.getElementById(tabindex).value/100;
+			testopremio='&premio='+document.getElementById(indexpremio).value;
+		}
+		if (event.keyCode=='13') {
+			tabindex++;
+			if (document.getElementById(tabindex)) document.getElementById(tabindex).focus();
+		}
+    myRequest = CreateXmlHttpReq(myHandler);
+  	myRequest.open('GET','gestionale_query.php?id='+id+'&idcategoria='+idcategoria+'&field='+field+'&valore='+valore+'&idofferta='+idofferta+testopremio);
+  	myRequest.send(null);
+  }
+}
+
+</script>
 <?php
+
+global $prefix, $db, $admin, $user;
+
 $confirm = 'onclick="return confirm(' . chr(39) . 'Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?' . chr(39) . ')"';
 $act = $_GET[act];
 $id = $_GET[id];
 $tablename = "nuke_entita";
-$azioni_item=$_GET["azioni_item"];
 
-if ($blocca==0) {
-	if ($_GET[action]=='salva') {
-		$_GET[valuea]=str_replace("'","&lsquo;",$_GET[valuea]);
-		$sql = "update nuke_offerte_detail1 set $_GET[fielda]='$_GET[valuea]',$_GET[fieldb]='$_GET[valueb]',$_GET[fieldc]='$_GET[valuec]',$_GET[fieldd]='$_GET[valued]' where id=$_GET[idriga]";
-		$db->sql_query($sql);
-		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&view=editavanzato&scrolltop=$_GET[scrolltop]");
-	}
-	if ($_GET[action]=='salva_franchigia') {
-		$sql = "UPDATE nuke_offerte_detail1 SET franchigia='$_GET[franchigia]' WHERE idcategoria ='$_GET[idcategoria]' and idofferta=$_GET[id]";
-		$db->sql_query($sql);
-		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&view=editavanzato&scrolltop=$_GET[scrolltop]");
-	}
-	if ($azioni_item=='aggiungiitem') {
-			$sql = "INSERT INTO nuke_offerte_detail1 (idcategoria,identita,idofferta,ordine_c,ordine_e) VALUES ('$_GET[idcategoria]','$_GET[identita]','$_GET[id]','$_GET[ordine_c]','$_GET[ordine_e]')";
-			$result = $db->sql_query($sql);
-			if ($_GET[idcategoria]=='55') {
-				if ($row[field2]=='18') { //All Risk
-					$sql = "DELETE FROM nuke_offerte_detail_cga WHERE idofferta='$id' AND field1='60'";
-					$result = $db->sql_query($sql);			
-
-					$sql = "DELETE FROM nuke_offerte_detail_cga WHERE idofferta='$id' AND field1='100'";
-					$result = $db->sql_query($sql);			
-					$sql = "INSERT INTO nuke_offerte_detail_cga (idofferta,field1,field2) VALUES ('$id','100','CGA')";
-					$result = $db->sql_query($sql);
-				}
-			}
-			header("Location: gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&idcategoria=$_GET[idcategoria]&scrolltop=$_GET[scrolltop]");
-	}
-	if ($azioni_item=='eliminaitem') {
-			$sql = "DELETE FROM nuke_offerte_detail1 WHERE id = '$_GET[idoffertedetail1]'";
-			$result = $db->sql_query($sql);	
-			header("Location: gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&scrolltop=$_GET[scrolltop]");
-	}
-	if ($azioni_item=='aggiungicat') {
-			$sql = "SELECT * FROM nuke_entita WHERE field1='$_GET[idcategoria]'";
-			$rs = $db->sql_query($sql);
-			while ($row_addcat = $db->sql_fetchrow($rs))
-			{
-				$sql = "INSERT INTO nuke_offerte_detail1 (idcategoria,identita,idofferta) VALUES ('$_GET[idcategoria]','$row_addcat[id]','$_GET[id]')";
-				$result = $db->sql_query($sql);	
-			}
-			header("Location: gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&idcategoria=$_GET[idcategoria]&scrolltop=$_GET[scrolltop]");
-	}
-	if ($azioni_item=='eliminacat') {
-			$sql = "SELECT * FROM nuke_entita WHERE field1='$_GET[idcategoria]'";
-			$rs = $db->sql_query($sql);
-			while ($row_elcat = $db->sql_fetchrow($rs))
-			{
-				$sql = "DELETE FROM nuke_offerte_detail1 WHERE identita = '$row_elcat[id]' and idofferta = '$_GET[id]'";
-				$result = $db->sql_query($sql);	
-			}
-			header("Location: gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&scrolltop=$_GET[scrolltop]");
-	}
+if ($azioni=='aggiungiitem') {
+		$sql = "INSERT INTO nuke_offerte_detail1 (idcategoria,identita,idofferta) VALUES ('$_GET[idcategoria]','$_GET[identita]','$_GET[id]')";
+		$result = $db->sql_query($sql);	
+		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&idcategoria=$_GET[idcategoria]&scrolltop=$_GET[scrolltop]");
 }
-$disabled= "";
-if ($blocca==1) $disabled= " disabled ";
+if ($azioni=='eliminaitem') {
+		$sql = "DELETE FROM nuke_offerte_detail1 WHERE id = '$_GET[idoffertedetail1]'";
+		$result = $db->sql_query($sql);	
+		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&scrolltop=$_GET[scrolltop]");
+}
+if ($azioni=='aggiungicat') {
+		$sql = "SELECT * FROM nuke_entita WHERE field1='$_GET[idcategoria]'";
+		$rs = $db->sql_query($sql);
+		while ($row = $db->sql_fetchrow($rs))
+		{
+			$sql = "INSERT INTO nuke_offerte_detail1 (idcategoria,identita,idofferta) VALUES ('$_GET[idcategoria]','$row[id]','$_GET[id]')";
+			$result = $db->sql_query($sql);	
+		}
+		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&idcategoria=$_GET[idcategoria]&scrolltop=$_GET[scrolltop]");
+}
+if ($azioni=='eliminacat') {
+		$sql = "SELECT * FROM nuke_entita WHERE field1='$_GET[idcategoria]'";
+		$rs = $db->sql_query($sql);
+		while ($row = $db->sql_fetchrow($rs))
+		{
+			$sql = "DELETE FROM nuke_offerte_detail1 WHERE identita = '$row[id]' and idofferta = '$_GET[id]'";
+			$result = $db->sql_query($sql);	
+		}
+		header("Location: gestionale.php?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&scrolltop=$_GET[scrolltop]");
+}
 
 
 //Visualizzazione ad albero
 	OpenTable();
 	$tabindex=1000;
-	echo "<table width=100% border=0 cellspacing=0 cellpadding=0>
-				<tr>
-					<td width=20% align=center>&nbsp;</td>
-					<td width=45% align=center><strong>Items</strong></td>
-					<td width=35% align=center><strong>Sum/Stamp/Premium</strong><br>Currency $valuta</td>
-				</tr>
-				<tr><td colspan=2 align=center><br>";
-				$rs_categorie = $db->sql_query("SELECT * FROM nuke_categorie WHERE idpolizza=$row[field2] order by ordine");
-				echo "<select name=categorie id=categorie onChange=window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id=$id&view=editavanzato&idcategoria='+this.value+'&scrolltop='+document.getElementById('offerte').scrollTop; style=width:150px;font-size:12px;><option></option>";
-				while ($categorie = $db->sql_fetchrow($rs_categorie))
-				{
-					echo "<option value='$categorie[id]'>$categorie[categoria]</option>";
-				}
-				echo "</select>";
-	echo "</td><td align=center><br>Select a category</td></tr>
+	echo "<table width=100% border=1 cellspacing=0 cellpadding=0>
+				<td width=45% align=center><strong>Beni</strong></td>
+				<td width=35% align=center><strong>Somma/Tasso/Premio</strong><br>Valuta $valuta</td>
+				<td width=20% align=center><strong>Azioni</strong></td>
 				</table>";
-	echo '<style type="text/css">';
-	echo 'table.bottomBorder { border-collapse:collapse; }';
-	echo 'table.bottomBorder td, table.bottomBorder th { border-bottom:1px dotted black;padding:5px; }';
-	echo '</style>';
 
-	$rs_categorie = $db->sql_query("SELECT * FROM nuke_categorie WHERE idpolizza=$row[field2] and (id='$_GET[idcategoria]' or id in (SELECT distinct idcategoria FROM nuke_offerte_detail1 WHERE idofferta=$_GET[id])) order by ordine");
+	$rs_categorie = $db->sql_query("SELECT * FROM nuke_categorie WHERE idpolizza=$row[field2] order by ordine");
 	while ($categorie = $db->sql_fetchrow($rs_categorie))
 	{
 		$nra = $db->sql_numrows($db->sql_query("SELECT distinct * FROM nuke_offerte_detail1 WHERE idcategoria ='$categorie[id]' and idofferta=$_GET[id]"));
 		$a = $db->sql_fetchrow($db->sql_query("SELECT distinct * FROM nuke_offerte_detail1 WHERE idcategoria ='$categorie[id]' and idofferta=$_GET[id]"));
-		if ($nra > 0) {$checked=' checked ';}
-		if ($nra == 0) {$checked='';}
-		$disabled=' ';
+		OpenTable();
+		echo "<p id=categoria$categorie[id]><a name=categoria$categorie[id]></a>";
+		echo '<div id="into_albero" align=center>';
+		echo "<table width=100% border=0 cellspacing=0 cellpadding=0>";
+		echo "<td width=45% align=left>($categorie[ordine])&nbsp;$categorie[categoria]&nbsp;(<i>$categorie[category]</i>)";
+		echo "<a href=gestionale.php?name=parametri&subname=entita&act=newitem&idcategoria=$categorie[id]&idpolizza=$row[field2]&idofferta=$_GET[id]#categoria$categorie[id]>";
+		echo " <font size=1><u>- Inserisci nuovo item -</u></font>";
+		echo "</a>";
+		echo "</td>";
+		if ($nra > 0) {$img='circle_green.png';$add='0';$remove='1';$trafficlight='green';}
+		if ($nra == 0) {$img='circle_red.png';$add='1';$remove='0';$trafficlight='red';}
+		echo "</td>";
+		echo "<td align=center width=35%>";
+		//if ($trafficlight=='green') {
+			//echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$a[somma]'  onkeyup=javascript:query_now_dettagli_offerte_1($tabindex,event,'$categorie[id]','somma',this.value,$_GET[id],'')>";
+			//$tabindex=$tabindex+1;
+			//echo "<input tabindex=$tabindex style='font-size:17px' size=3 type=text id=$tabindex value='$a[tasso]' onkeyup=javascript:query_now_dettagli_offerte_1($tabindex,event,'$categorie[id]','tasso',this.value,$_GET[id],'')>";
+			//$tabindex=$tabindex+1;
+			//echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$a[premio]' onkeyup=javascript:query_now_dettagli_offerte_1($tabindex,event,'$categorie[id]','premio',this.value,$_GET[id],'') onchange=javascript:query_now_dettagli_offerte_1($tabindex,event,'$categorie[id]','premio',this.value,$_GET[id],'')>";
+			//$tabindex=$tabindex+1;
+			//echo "<input type=hidden name=idoffertedetail1 value=$a[id]>";
+		//}
+		echo "</td>";
+		echo "<td width=20% align=center>";
+		echo "<img src=immagini/$img>";
+		if ($add=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=aggiungicat&idcategoria=$categorie[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/add.png></a>";}
+		if ($add=='0') {echo "<img border=0 src=immagini/add_grey.png>";}
+		if ($remove=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=eliminacat&idcategoria=$categorie[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/minus.png></a>";}
+		if ($remove=='0') {echo "<img border=0 src=immagini/minus_grey.png>";}
+		echo "</td></table>";
+		echo "</div></p>";
 
-		echo "<br><hr width=100% size=3 color=darkgreen>";
-		echo "<table class=bottomBorder width=100% border=0 cellspacing=2 cellpadding=2>";
-
-		echo "<tr>";
-			echo "<td width=10% align=center>";
-			?>
-			<input type=checkbox <?php echo $checked; ?> onClick="if(this.checked){window.location='gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=<?php echo $_GET[id]; ?>&azioni_item=aggiungicat&idcategoria=<?php echo $categorie[id]; ?>&scrolltop='+document.getElementById('offerte').scrollTop;}else{window.location='gestionale.php?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=<?php echo $_GET[id]; ?>&azioni_item=eliminacat&idcategoria=<?php echo $categorie[id]; ?>&scrolltop='+document.getElementById('offerte').scrollTop;}">
-			<?php
-			echo "</td>";
-			echo "<td width=10% align=center>";
-			echo "</td>";
-			echo "<td colspan=3 width=50% align=left>";
-				echo "($categorie[ordine])&nbsp;".nl2br($categorie[categoria])."<br><i>".nl2br($categorie[category])."</i>)&nbsp;";
-				if ($checked=='') $disabled=' disabled ';
-				echo "&nbsp;&nbsp;::&nbsp;&nbsp;";
-				echo "<input $disabled tabindex=$tabindex style='font-size:12px' size=6 type=text id=$tabindex value='$a[franchigia]'>";
-				echo "&nbsp;<input type=button value=Upd onClick=window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id=$id&view=editavanzato&idcategoria=$categorie[id]&action=salva_franchigia&scrolltop='+document.getElementById('offerte').scrollTop+'&franchigia='+document.getElementById('$tabindex').value;>";
-				echo "&nbsp;&nbsp;::&nbsp;&nbsp;";
-				echo "<a href=gestionale.php?name=parametri&subname=entita&act=newitem&idcategoria=$categorie[id]&idpolizza=$row[field2]&idofferta=$_GET[id]#categoria$categorie[id]><font size=1><u>- Insert new item -</u></font></a>";
-			echo "</td>";
-		echo "</tr>";
-		$tabindex++;
+		
+		echo '<p><div id="into_albero" align=center>';
+		echo "<table width=100% border=0 cellspacing=0 cellpadding=0>";
 		$rs_nomi = $db->sql_query("SELECT * FROM nuke_entita WHERE field1='$categorie[id]' order by ordine");
 		$nr_nomi = $db->sql_numrows($rs_nomi);
 		while ($nomi = $db->sql_fetchrow($rs_nomi))
 		{
 			$rsb = $db->sql_query("SELECT * FROM nuke_offerte_detail1 WHERE idcategoria='$nomi[field1]' and identita='$nomi[id]' and idofferta='$_GET[id]' order by id");
 			$nrb = $db->sql_numrows($rsb);
-			$checked=' checked ';
-			$trafficlight='green';
-			if ($nrb==0) {
+			if ($nrb==0)
+			{
 				$b = $db->sql_fetchrow($rsb);
-				$checked=' ';
 				echo "<tr>";
-					echo "<td width=10%>&nbsp;</td>";
-					echo "<td width=10% align=left>";
-						echo "<input type=checkbox $checked onClick=if(this.checked){window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=aggiungiitem&identita=$nomi[id]&idcategoria=$categorie[id]&ordine_e=$nomi[ordine]&ordine_c=$categorie[ordine]&scrolltop='+document.getElementById('offerte').scrollTop;}else{window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=eliminaitem&idoffertedetail1=$b[id]&scrolltop='+document.getElementById('offerte').scrollTop;};>";
-					echo "</td>";
-					echo "<td width=1% align=left>";
-					echo "</td>";
-					echo "<td width=49% align=left>";
-						echo "($nomi[ordine])&nbsp;".nl2br($nomi[field4])."<br><i>".nl2br($nomi[field5])."</i>";
-					echo "</td>";
-					echo "<td align=center width=30% valign=middle>";
-					echo "</td>";
-				echo "</tr>";
+				echo "<td width=5%></td>";
+				echo "<td width=40% align=left>($nomi[ordine])&nbsp;".$nomi[field4]." (<i>".$nomi[field5]."</i>)";
+				if ($nrb > 0) {$img='circle_green.png';$add='1';$remove='1';$trafficlight='green';echo "<br><input tabindex=$tabindex style='font-size:12px' size=50 type=text id=$tabindex value='$b[description]'  onkeydown=javascript:query_now($tabindex,event,'$nomi[field1]','description',this.value,$_GET[id],$b[id]);>";$tabindex++;}
+				if ($nrb == 0) {$img='circle_red.png';$add='1';$remove='0';$trafficlight='red';}
+				echo "</td>";
+				echo "<td align=center width=35% valign=middle>&nbsp;";
+				if ($trafficlight=='green') {
+					echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$b[somma]'  onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','somma',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input tabindex=$tabindex style='font-size:17px' size=3 type=text id=$tabindex value='$b[tasso]' onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','tasso',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$b[premio]' onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','premio',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input type=hidden name=idoffertedetail1 value=$b[id]>";
+				}
+				echo "</td>";
+				echo "<td width=20% align=center>";
+				echo "<img src=immagini/$img>";
+				if ($add=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=aggiungiitem&identita=$nomi[id]&idcategoria=$categorie[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/add.png></a>";}
+				if ($add=='0') {echo "<img border=0 src=immagini/add_grey.png>";}
+				if ($remove=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=eliminaitem&idoffertedetail1=$b[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/minus.png></a>";}
+				if ($remove=='0') {echo "<img border=0 src=immagini/minus_grey.png>";}
+				echo "</td></tr>";
 			}
 			for ($h=0;$h<$nrb;$h++)
 			{
 				$b = $db->sql_fetchrow($rsb);
 				echo "<tr>";
-					echo "<td width=10%>&nbsp;</td>";
-					echo "<td width=10% align=left>";
-						echo "<input type=checkbox $checked onClick=if(this.checked){window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=aggiungiitem&identita=$nomi[id]&ordine_e=$nomi[ordine]&idcategoria=$categorie[id]&ordine_c=$categorie[ordine]&scrolltop='+document.getElementById('offerte').scrollTop;}else{window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=eliminaitem&idoffertedetail1=$b[id]&scrolltop='+document.getElementById('offerte').scrollTop;};>";
-						echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=aggiungiitem&identita=$nomi[id]&idcategoria=$categorie[id]&ordine_e=$nomi[ordine]&ordine_c=$categorie[ordine]&scrolltop='+document.getElementById('offerte').scrollTop;><img src=images/add_line.png border=0></a>";
-					echo "</td>";
-					echo "<td width=1% align=left>";
-					echo "</td>";
-					echo "<td width=49% align=left valign=middle>";
-					echo "<form name=form$tabindex id=form$tabindex method=get action=gestionale.php>
-								<input type=hidden name=name value=lloyds><input type=hidden name=subname value=offerte><input type=hidden name=act value=explode><input type=hidden name=view value=editavanzato>
-								<input type=hidden name=action value=salva><input type=hidden name=fielda value=description><input type=hidden name=fieldb value=somma><input type=hidden name=fieldc value=tasso><input type=hidden name=fieldd value=premio>
-								<input type=hidden name=id value=$_GET[id]>";
-						$formid = "form$tabindex";
-						if ($h==0) echo "($nomi[ordine])&nbsp;".nl2br($nomi[field4])."<br><i>".nl2br($nomi[field5])."</i>";
-						if ($nrb > 0) {
-							echo "<br>";
-							$savedtabindex=$tabindex;
-							echo "<textarea name=valuea tabindex=$tabindex $readonly style='font-size:12px' id=$tabindex rows=4 cols=60>$b[description]</textarea>";
-							$tabindex++;
-						}
-						if ($nrb == 0) $checked='';
-					echo "</td>";
-					echo "<td align=right width=30% valign=bottom>";
-						echo "<input name=valueb $disabled tabindex=$tabindex style='font-size:17px' size=8 type=text id=$tabindex value='$b[somma]'>";
-						$tabindex=$tabindex+1;
-						echo "<input name=valuec $disabled tabindex=$tabindex style='font-size:17px' size=4 type=text id=$tabindex value='$b[tasso]' onKeyUp=calcola('$tabindex');>";
-						$tabindex=$tabindex+1;
-						echo "<input name=valued $disabled tabindex=$tabindex style='font-size:17px' size=8 type=text id=$tabindex value='$b[premio]'>";
-						$tabindex=$tabindex+1;
-						echo "<input type=hidden name=idoffertedetail1 value=$b[id]>";
-						echo "<input type=hidden name=idriga value=$b[id]>";
-						$tabdescription = $tabindex-4;
-						$tabsomma = $tabindex-3;
-						$tabtasso = $tabindex-2;
-						$tabpremio = $tabindex-1;
-						echo "<br><input type=button name=update value=Update tabindex=$tabindex onClick=vai('$formid');>";
-						$tabindex=$tabindex+1;
-						echo "</form>";
-					echo "</td>";
-				echo "</tr>";
-			}
-			$sql = "SELECT * FROM nuke_offerte_detail1 WHERE idcategoria='$categorie[id]' and identita='9999' and idofferta='$_GET[id]' and ordine_e=$nomi[ordine]";
-			$rsbr = $db->sql_query($sql);
-			$nrbr = $db->sql_numrows($rsbr);
-			$br = $db->sql_fetchrow($rsbr);
-			echo "<tr>";
-				$checked=' ';
-				if ($nrbr!='') $checked=' checked ';
-				echo "<td width=10%></td>";
-				echo "<td width=10% align=left>";
-					echo "<input type=checkbox $checked onClick=if(this.checked){window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=aggiungiitem&ordine_e=$nomi[ordine]&identita=9999&idcategoria=$categorie[id]&ordine_c=$categorie[ordine]&scrolltop='+document.getElementById('offerte').scrollTop;}else{window.location='$_SERVER[PHP_SELF]?view=editavanzato&name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni_item=eliminaitem&idoffertedetail1=$br[id]&scrolltop='+document.getElementById('offerte').scrollTop;};>";
+				echo "<td width=5%>&nbsp;</td>";
+				echo "<td width=40% align=left valign=middle>";
+				if ($h==0) echo "($nomi[ordine])&nbsp;".$nomi[field4]." (<i>".$nomi[field5]."</i>)";
+				if ($nrb > 0) {$img='circle_green.png';$add='1';$remove='1';$trafficlight='green';echo "<br><input tabindex=$tabindex style='font-size:12px' size=50 type=text id=$tabindex value='$b[description]'  onkeydown=javascript:query_now($tabindex,event,'$nomi[field1]','description',this.value,$_GET[id],$b[id]);>";$tabindex++;}
+				if ($nrb == 0) {$img='circle_red.png';$add='1';$remove='0';$trafficlight='red';}
 				echo "</td>";
-				echo "<td width=1% align=left></td>";
-				echo "<td width=49% align=left valign=middle>";
-				if ($nrbr!='') {
-					echo "<font color=red size=3><u><strong>PAGE BREAK INSERTED</strong></u></font>";
-				}else{
-					echo "<font color=black size=3><strong>INSERT PAGE BREAK</strong></font>";
+				echo "<td align=center width=35% valign=middle>&nbsp;";
+				if ($trafficlight=='green') {
+					echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$b[somma]'  onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','somma',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input tabindex=$tabindex style='font-size:17px' size=3 type=text id=$tabindex value='$b[tasso]' onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','tasso',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input tabindex=$tabindex style='font-size:17px' size=6 type=text id=$tabindex value='$b[premio]' onkeydown=".chr(34)."javascript:query_now($tabindex,event,'$nomi[field1]','premio',this.value,$_GET[id],$b[id]);".chr(34).">";
+					$tabindex=$tabindex+1;
+					echo "<input type=hidden name=idoffertedetail1 value=$b[id]>";
 				}
 				echo "</td>";
-				echo "<td align=right width=30% valign=bottom></td>";
-			echo "</tr>";
+				echo "<td width=20% align=center>";
+				echo "<img src=immagini/$img>";
+				if ($add=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=aggiungiitem&identita=$nomi[id]&idcategoria=$categorie[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/add.png></a>";}
+				if ($add=='0') {echo "<img border=0 src=immagini/add_grey.png>";}
+				if ($remove=='1') {echo "<a href=# onClick=window.location='$_SERVER[PHP_SELF]?name=lloyds&subname=offerte&act=explode&id=$_GET[id]&azioni=eliminaitem&idoffertedetail1=$b[id]&scrolltop='+document.getElementById('offerte_detail_1').scrollTop;><img border=0 src=immagini/minus.png></a>";}
+				if ($remove=='0') {echo "<img border=0 src=immagini/minus_grey.png>";}
+				echo "</td></tr>";
+			}
+			echo "<tr><td colspan=4><hr size=1></td></tr>";
 		}
-		echo "</table>";
+		echo "</table></div></p>";
+		CloseTable();
 	}
 	CloseTable();
 ?>

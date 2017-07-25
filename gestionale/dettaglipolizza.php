@@ -1,12 +1,24 @@
-<div class="offerte" id="offerte" style="position:relative;_position:relative;height:100%;overflow:auto;padding:0px;">
+<script language=JavaScript>
+function modify(id,scrolltop,ord,pag) {
+	window.location='gestionale.php?name=parametri&subname=dettaglipolizza&ord='+ord+'&pag='+pag+'&act=mod&id='+id+'&scrolltop='+scrolltop;
+}
+function remove(id,scrolltop,ord,pag) {
+	x=confirm("Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?");
+	if (x) window.location='gestionale.php?name=parametri&subname=dettaglipolizza&ord='+ord+'&pag='+pag+'&act=del&id='+id+'&scrolltop='+scrolltop;
+}
+</script>
 <?php
+require_once("mainfile.php");
+include("header.php");
+global $prefix, $db, $admin, $user;
+
 $confirm = 'onclick="return confirm(' . chr(39) . 'Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?' . chr(39) . ')"';
 $act = $_POST[act];
 $id = $_POST[id];
 $pag = $_POST['pag'];
 $ord = $_POST['ord'];
 $tablename = "nuke_domandeproposta";
-$g_BannerPath = "c:/wwwroot/zeus.rvasa.ch/upload/";
+$g_BannerPath = "C:/inetpub/rva.ch/upload/";
 
 if (!$act) $act = $_GET[act];
 if (!$ord) $ord = $_GET[ord];
@@ -20,17 +32,33 @@ $size = $_POST[size];
 
 $filenametodelete = $_GET[filename];
 if (!$id) $id = $_GET[id];
-OpenTable();
-echo '<table width=100% border=1 cellspacing=0 cellpadding=5 bordercolor=darkgreen><td>';
-echo "<input type=button value='Exit' onclick=location.href='gestionale.php?name=parametri' style=font-family: Verdana; font-size: 10px;>";
-echo "&nbsp;&nbsp;::&nbsp;&nbsp;";
-echo '<input type=button value="New" onclick="location.href=' . chr(39) . 'gestionale.php?act=new&name=parametri&subname=dettaglipolizza&ord=' . $ord . '&pag='. $pag . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
-echo "&nbsp;&nbsp;::&nbsp;&nbsp;";
-echo '<input type=button value="Show all records" onclick="location.href=' . chr(39) . 'gestionale.php?name=parametri&subname=dettaglipolizza' . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
-echo "</td></table>";
-CloseTable();
 
+if ($user=='')
+{
+	header('Location: modules.php?name=Your_Account');
+}
+
+
+title("$sitename: Parametri <i>Domande Proposta</i>");
+?>
+	<script>
+		if (navigator.appName=='Netscape') {
+			if (screen.height>1000) allora=screen.height-340;
+			if (screen.height<1000) allora=screen.height-380;
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:0;  _position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+		if (navigator.appName=='Microsoft Internet Explorer') {
+			if (window.document.documentElement.offsetHeight>1000) allora=window.document.documentElement.offsetHeight-200;
+			if (window.document.documentElement.offsetHeight<1000) allora=window.document.documentElement.offsetHeight-200;
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:100;_position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+	</script>
+<?php
 OpenTable();
+	echo '<p>';
+	echo '<input type=button value="Nuovo Record" onclick="location.href=' . chr(39) . 'gestionale.php?act=new&name=parametri&subname=dettaglipolizza&ord=' . $ord . '&pag='. $pag . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
+	echo '<input type=button value="Mostra tutti i record" onclick="location.href=' . chr(39) . 'gestionale.php?name=parametri&subname=dettaglipolizza' . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
+	echo '</p>';
 
 	if ($act=='sav'){
 	$sql = "UPDATE " . $tablename . " SET  tipopolizza='" . $_GET[tipopolizza] . "' , description='" . str_replace("à","&agrave;",str_replace("è","&egrave;",str_replace("é","&egrave;",str_replace("ù","&ugrave;",str_replace("ò","&ograve;",str_replace("ì","&igrave;",str_replace("'","&lsquo;",$_GET[description]))))))) . "' where id = '" . $id . "'";
@@ -87,14 +115,14 @@ OpenTable();
 	$rs = $db->sql_query($sql);
 	$nr = $db->sql_numrows($rs);
 	
-	echo '<table width=100% border=1 cellspacing=0 cellpadding=5 bordercolor=darkgreen>';
+	echo '<table width=100% border=1 cellspacing=0 cellpadding=0>';
 	echo '<tr>';
-	echo '<th width=5%><font face=verdana size=2><a href=banner.php?ord=id>id</a></th>';
+	echo '<th width=5%><font face=verdana size=2><a href=banner.php?ord=id>ID</a></th>';
 	echo '<th width=25%><font face=verdana size=2><a href=banner.php?ord=filename>Filename</a></th>';
-	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=tipopolizza>Policy Type</a></th>';
+	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=tipopolizza>Tipo di Polizza</a></th>';
 	echo '<th width=25%><font face=verdana size=2><a href=banner.php?ord=description>Description</a></th>';
-	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=type>File Type</a></th>';
-	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=size>Dimension</a></th>';
+	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=type>Tipo</a></th>';
+	echo '<th width=10%><font face=verdana size=2><a href=banner.php?ord=size>Dimensione</a></th>';
 	echo '<th width=10%><font face=verdana size=2>Funzionalità</font></th>';
 	echo '</tr>';
 
@@ -114,7 +142,7 @@ OpenTable();
 		echo "<td valign=middle align=center><input type=text name=description size=50></td>";
 		echo "<td valign=middle align=center>&nbsp;</td>";
 		echo "<td valign=middle align=center>&nbsp;</td>";
-		echo "<td align=center valign=middle><input type=submit value=Save style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'><input type=reset value=Reset style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'></td>";
+		echo "<td align=center valign=middle><input type=submit value=Salva style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'><input type=reset value=Reset style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'></td>";
 		echo '</tr>';
 		echo '</form>';
 		$act = '';
@@ -142,7 +170,7 @@ OpenTable();
 			echo "<td valign=middle align=center><input type=text name=description size=50 value='$row[description]'></td>";
 			echo "<td valign=middle align=center>&nbsp;</td>";
 			echo "<td valign=middle align=center>&nbsp;</td>";
-			echo "<td align=center valign=middle><input type=submit value=Save style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'><input type=reset value=Reset style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'></td>";
+			echo "<td align=center valign=middle><input type=submit value=Salva style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'><input type=reset value=Reset style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'></td>";
 			echo '</form>';
 			echo '</tr>';
 		}
@@ -153,17 +181,14 @@ OpenTable();
 		$sql_tipologia = "SELECT * FROM nuke_tipologiepolizze where id='".$row[tipopolizza]."'";
 		$rs_tipologia = $db->sql_query($sql_tipologia);
 		$tipologia = $db->sql_fetchrow($rs_tipologia);
-		echo $tipologia[field2];
+		echo "aaa".$tipologia[field2];
 		echo "</td>";
 		echo "<td valign=middle align=center><font face=verdana size=2>" . $row[description] . "</td>";
 		echo "<td valign=middle align=center><font face=verdana size=2>" . $row[type] . "</td>";
 		echo "<td valign=middle align=center><font face=verdana size=2>" . $row[size] . "</td>";
 		echo "<td align=center valign=middle><font face=verdana size=2>
-					<input type=button value=MOD onClick=location.href='gestionale.php?name=parametri&subname=dettaglipolizza&id=$row[id]&scrolltop='+document.getElementById('offerte').scrollTop+'&act=mod';>";
-					?>
-					<input type=button value=DEL onClick="if(confirm('Warning, you will not be able to undo this action, are you really sure to continue?')) location.href='gestionale.php?name=parametri&subname=dettaglipolizza&id=<?php echo $row[id]; ?>&scrolltop='+document.getElementById('offerte').scrollTop+'&act=del';">
-					<?php
-					echo "</td>";
+					<a href=# onClick=modify($row[id],eval(document.getElementById('offerte').scrollTop),$ord,$pag);><img border=0 src=immagini/modify.png></a>
+					<a href=# onClick=remove($row[id],eval(document.getElementById('offerte').scrollTop),$ord,$pag);><img border=0 src=immagini/remove.png></a></td>";
 		echo '</tr>';
 		}
 	}

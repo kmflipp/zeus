@@ -14,7 +14,7 @@
 
 define('ADMIN_FILE', true);
 
-if($aid!='') {
+if(isset($aid)) {
   if($aid AND (!isset($admin) OR empty($admin)) AND $op!='login') {
     unset($aid);
     unset($admin);
@@ -35,7 +35,6 @@ if((stripos_clone($checkurl,'AddAuthor')) OR (stripos_clone($checkurl,'VXBkYXRlQ
   die("Illegal Operation");
 }
 get_lang("admin");
-
 
 function create_first($name, $url, $email, $pwd, $user_new) {
 	global $prefix, $db, $user_prefix;
@@ -58,7 +57,6 @@ function create_first($name, $url, $email, $pwd, $user_new) {
 
 global $admin_file;
 $the_first = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_authors"));
-
 if ($the_first == 0) {
 	if (!$name) {
 		include("header.php");
@@ -86,12 +84,12 @@ if ($the_first == 0) {
 	die();
 }
 
-if (isset($aid) && (ereg("[^a-zA-Z0-9_-]",trim($aid)))) {
-   die("Begone");
-}
-if (isset($aid)) { $aid = substr($aid, 0,25);}
-if (isset($pwd)) { $pwd = substr($pwd, 0,40);}
-if ((isset($aid)) && (isset($pwd)) && (isset($op)) && ($op == "login")) {
+        if (isset($aid) && (ereg("[^a-zA-Z0-9_-]",trim($aid)))) {
+           die("Begone");
+        }
+        if (isset($aid)) { $aid = substr($aid, 0,25);}
+        if (isset($pwd)) { $pwd = substr($pwd, 0,40);}
+        if ((isset($aid)) && (isset($pwd)) && (isset($op)) && ($op == "login")) {
 	$datekey = date("F j");
 	$rcode = hexdec(md5($_SERVER['HTTP_USER_AGENT'] . $sitekey . $_POST['random_num'] . $datekey));
 	$code = substr($rcode, 2, 6);
@@ -100,11 +98,9 @@ if ((isset($aid)) && (isset($pwd)) && (isset($op)) && ($op == "login")) {
 		die();
 	}
 	if(!empty($aid) AND !empty($pwd)) {
-		//$pwd = md5($pwd);
+		$pwd = md5($pwd);
 		$result = $db->sql_query("SELECT pwd, admlanguage FROM ".$prefix."_authors WHERE aid='$aid'");
-		$row = $db->sql_fetchrow($result);
-		$rpwd = $row[pwd];
-		$admlanguage = $row[admlanguage];
+		list($rpwd, $admlanguage) = $db->sql_fetchrow($result);
 		$admlanguage = addslashes($admlanguage);
 		if($rpwd == $pwd) {
 			$admin = base64_encode("$aid:$pwd:$admlanguage");
@@ -115,7 +111,8 @@ if ((isset($aid)) && (isset($pwd)) && (isset($op)) && ($op == "login")) {
 }
 
 $admintest = 0;
-if ($admin!='') {
+
+if(isset($admin) && !empty($admin)) {
 	$admin = addslashes(base64_decode($admin));
 	$admin = explode(":", $admin);
 	$aid = addslashes($admin[0]);
@@ -137,20 +134,18 @@ if ($admin!='') {
 	if (!$result2) {
 		die("Selection from database failed!");
 	} else {
-		$row2 = $db->sql_fetchrow($result2);
-		$rname=$row2[name];
-		$rpwd=$row2[pwd];
+		list($rname, $rpwd) = $db->sql_fetchrow($result2);
 		if($rpwd == $pwd && !empty($rpwd)) {
 			$admintest = 1;
 		}
 	}
 }
+
 if(!isset($op)) { 
 	$op = "adminMain"; 
 } elseif(($op=="mod_authors" OR $op=="modifyadmin" OR $op=="UpdateAuthor" OR $op=="AddAuthor" OR $op=="deladmin2" OR $op=="deladmin" OR $op=="assignstories" OR $op=="deladminconf") AND ($rname != "God")) {
     die("Illegal Operation");
 }
-
 $pagetitle = "- "._ADMINMENU."";
 
 /*********************************************************/
@@ -459,8 +454,7 @@ function adminMain() {
 	include("footer.php");
 }
 
-
-if($admintest==1) {
+if($admintest) {
 
 	switch($op) {
 

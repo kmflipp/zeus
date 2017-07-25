@@ -1,67 +1,35 @@
 <center>
-<table class="bodyline" cellspacing="0" cellpadding="0" border="0" style="height:100%;width:95%;">
-	<tr valign=top> 
-		<td align="center" valign=bottom bgcolor=lightgrey style=background-image:url('themes/PurpleDaze/images/logo.jpg');width:100%;height:113;></td>
-	</tr>
-	
-	<tr valign=top><td align=center bgcolor=lightgrey>
-            <?php if(is_user($user)) {
-                OpenTable(); ?>
-                <table cellspacing=0 cellpadding=0 style="border:2px solid darkred;" bgcolor=pink width=100%><td align=left>
-                <?php
-	    	$result3 = $db->sql_query("SELECT title, custom_title FROM " . $prefix . "_gestionale WHERE active='1' AND inmenu='1' and (custom_title<>'life' and custom_title!='general branch') ORDER BY mid ASC");
-	    	while ($row3 = $db->sql_fetchrow($result3)) {
-                    $result33 = $db->sql_query("SELECT title, custom_title FROM " . $prefix . "_gestionale_submenu WHERE active='1' AND parent_title='".$row3['title']."'");
-                        $title = $row3['title'];
-                        $custom_title = $row3['custom_title'];
-                        if ($name=='Your_Account') $name='home';	
-                            echo "<a href=gestionale.php?name=$title data-popupmenu='$title'><strong>&nbsp;&nbsp;".strtoupper($custom_title)."</strong></a>";
-                            echo "<ul id='$title' class='jqpopupmenu'>";
-                            while ($row33 = $db->sql_fetchrow($result33)) {
-                                $title33 = $row33['title'];
-                                $custom_title33 = $row33['custom_title'];
-                                echo "<li><strong><a href='gestionale.php?name=$title&subname=$title33'>".strtoupper($custom_title33)."</a></strong></li>";
-                            }
-                            echo "</ul>";
-                            if (strtoupper($custom_title)!='ADMIN') echo "<font>&nbsp;&nbsp;::&nbsp;&nbsp;</font>";
-		  	}
-                        echo "</div></td><td align=center>";
-                        if (isset($_COOKIE["idcliente"])) {
-                                $sql = "SELECT OLDCOD, NPROG, NRSIN, COD as id, TIT, COGNOME as cognome, NOME as nome, REPLACE(REPLACE(REPLACE(SEX, 'G', '1'), 'M', '2'), 'F', '3') AS SEX, CF, PIVA, INDIRIZZO as via1, CAP as npa1, 
-                                              CITTA as localita1, PROV, STATO as stato1, RUB, PRESSO, NATLUOGO as nazionalita, NATPROV, NATDATA as nascita, TEL, CELLULARE, FAX, TELEX, TELCASA, RIFER, ORIG, ZONA, BANCA, LINEA, NOTA, SME, 
-                                              LOBBY, RETE, PRODUTT, CEV, DTMAND, DTREVOCA, COMMERC, STATUS, NUMDIP, FATTUR, ATTESERC, ATTESTERE, COGE, DIV, MEMO, IMP, SIC, POT, 
-                                              INTRODUCER, GRP, SGR, ANTIC, SALDOI, CEE, ALLEGATI, PRIVACY, DTAGG, UTENTE, ATTIVO, NR_DOSSIER, NOTE_DOSSIER, INIZIO_LETTERA
-                                                                FROM [RASINI-APP".chr(92)."RVA_DB].RVA_PROD.dbo.CLIENTI WHERE COD = '$_COOKIE[idcliente]'";
-                                $rs = $db->sql_query1($sql);
-                                $nr = $db->sql_numrows($rs);
-                                $row = $db->sql_fetchrow($rs);
-                                echo "<font><strong>SELECTED CUSTOMER: $row[cognome] $row[nome] $row[RIFER]</strong>&nbsp;&nbsp;->&nbsp;&nbsp;";
-                                echo "<a style=text-decoration:underline;color:red; href=gestionale.php?name=clienti&act=explode&id=$_COOKIE[idcliente]>Go</a>&nbsp;&nbsp;::&nbsp;&nbsp;<a style=text-decoration:underline;color:red; href=gestionale.php?name=home&cookie=reset>Reset</a>";
-			  } else {
-					echo "<font>SELECT CUSTOMER: <strong><a style=text-decoration:underline;color:red; href=gestionale.php?name=clienti>Go</a>";
-			  }
-	
-				?>
-			</td><td align=right><font color=black face=verdana><strong>Where am I?&nbsp;&nbsp;
-			<?php 
-						$name1=$_GET[name];
-						$subname1=$_GET[subname];
-						if (strtoupper($_GET[name])=='YOUR_ACCOUNT') $name1 = 'HOME';
-			    	$rs_name = $db->sql_query("SELECT title, custom_title FROM nuke_gestionale WHERE title='$name1'");
-			    	$rs_subname = $db->sql_query("SELECT title, custom_title FROM nuke_gestionale_submenu WHERE title='$subname1'");
-			    	$row_name = $db->sql_fetchrow($rs_name);
-			    	$row_subname = $db->sql_fetchrow($rs_subname);
-						echo "<a href=gestionale.php?name=$name1>".strtoupper($row_name[custom_title])."</a>";
-						if ($_GET[subname]!='') echo " -> <a href=gestionale.php?name=$name1&subname=$_GET[subname]>".strtoupper($row_subname[custom_title])."</a>";
-			?>
-			&nbsp;&nbsp;</strong></font></td></table>
-			<?php CloseTable(); ?>
-		<?php } ?>
-		</td>
-	</tr>
-	<?php
-		if ($_GET[act]=='explode' && $_GET[name]=='lloyds' && $_GET[subname]=='offerte') {
-		}
-	?>
-	<tr height=100%>
-		<td valign=top bgcolor=lightgrey>
+<table class="bodyline" width=1280 height=100% cellspacing="0" cellpadding="0" border="0">
+	<tr> 
+		<td align="center" valign="top" bgcolor=lightgrey>
+						<img src="themes/PurpleDaze/images/logo.jpg" border="0" alt="$sitename">
+<!--
+//header con utente loggato, link e dataora
+<div id="floatdiv" style="position:fixed;margin-top:0;_position:absolute;_top:expression(eval(document.body.scrollTop)+58);">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td bgcolor=white><table width="100%" border="0" cellspacing="0" cellpadding="4">
+            <tr>
+              <td width="150" nowrap><font class="content">$theuser</font></td>
+              <td nowrap><div align="center"><font class="content"><strong>::</strong>&nbsp;<a href="index.php">Home</a> 
+                    &nbsp;<strong>::</strong></font></div></td>
+              <td width="150" nowrap><div align="center"><font class="content">
+                  <script type="text/javascript">
+var monthNames = new Array( "January","February","March","April","May","June","July","August","September","October","November","December");
+var now = new Date();
+thisYear = now.getYear();
+if(thisYear < 1900) {thisYear += 1900}; // corrections if Y2K display problem
+document.write(monthNames[now.getMonth()] + " " + now.getDate() + ", " + thisYear);
+</script>
+                  </font></td>
+            </tr>
+          </table>
+</div>
+          
+          </td>
+      </tr>
+    </table>
+-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr valign="top">
+<td valign="top" width="1" bgcolor=lightgrey>

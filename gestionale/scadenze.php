@@ -1,120 +1,125 @@
-<div class="offerte" id="offerte" style="position:relative;_position:relative;height:100%;overflow:auto;padding:0px;">
 <?php
+if ($name!='') {
+require_once("mainfile.php");
+include("header.php");
+}
+global $prefix, $db, $admin, $user;
+
+$confirm = 'onclick="return confirm(' . chr(39) . 'Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?' . chr(39) . ')"';
+$act = $_GET[act];
 $id = $_GET[id];
+$pag = $_GET['pag'];
+$ord = $_GET['ord'];
+$tablename = "nuke_polizze";
 
+$numeropolizza = $_GET[numeropolizza];
+$field8 = $_GET[field8];
+$field10 = $_GET[field10];
+$field11 = $_GET[field11];
+$field12 = $_GET[field12];
+$field13 = $_GET[field13];
+
+if ($user=='')
+{
+	header('Location: modules.php?name=Your_Account');
+}
+
+
+title("$sitename: Gestione <i>scadenze</i> LLOYD'S");
 $margintop = '100';
-if ($pippo=='1') $margintop = '680';
+if ($pippo=='1') $margintop = '410';
+?>
+	<script>
+		if (navigator.appName=='Netscape') {
+			<?php if ($pippo=='1') { ?>
+				if (screen.height>1000) allora=screen.height-800;
+				if (screen.height<1000) allora=screen.height-580;
+			<?php } else { ?>
+				if (screen.height>1000) allora=screen.height-340;
+				if (screen.height<1000) allora=screen.height-380;
+			<?php } ?>
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:0;  _position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+		if (navigator.appName=='Microsoft Internet Explorer') {
+			<?php if ($pippo=='1') { ?>
+				if (window.document.documentElement.offsetHeight>1000) allora=window.document.documentElement.offsetHeight-500;
+				if (window.document.documentElement.offsetHeight<1000) allora=window.document.documentElement.offsetHeight-500;
+			<?php } else { ?>
+				if (window.document.documentElement.offsetHeight>1000) allora=window.document.documentElement.offsetHeight-200;
+				if (window.document.documentElement.offsetHeight<1000) allora=window.document.documentElement.offsetHeight-200;
+			<?php } ?>
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:<?php echo $margintop; ?>;_position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+	</script>
+<?php
 OpenTable();
-echo '<table width=100% border=1 cellspacing=0 cellpadding=5 bordercolor=darkgreen><td>';
-echo "<input type=button value='Exit' onclick=location.href='gestionale.php?name=lloyds' style=font-family: Verdana; font-size: 10px;>";
-echo '</td></table>';
-CloseTable();
+echo '<p>';
+echo '<input type=button value="Ricerca" onclick="location.href=' . chr(39) . 'gestionale.php?name=lloyds&subname=scadenze&act=search&ord=' . $ord . '&pag='. $pag . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
+echo '<input type=button value="Mostra tutti i record" onclick="location.href=' . chr(39) . 'gestionale.php?name=lloyds&subname=scadenze' . chr(39) . '" style="font-family: Verdana; font-size: 10px">';
+echo '</p>';
 
-OpenTable();
-	$anno = $_GET[anno];
-	if ($anno=='') $anno='13';
-	$sql = "SELECT * FROM nuke_polizze where field6 like '%$anno' order by field6 DESC";
+echo '<p>';
+	if ($numeropolizza == '') $numeropolizza = '%';
+	if ($field8 == '') $field8 = '%';
+	if ($field10 == '') $field10 = '%';
+	if ($field11 == '') $field11 = '%';
+	if ($field12 == '') $field12 = '%';
+	if ($field13 == '') $field13 = '%';
+
+	$condizioni = " numeropolizza LIKE '$numeropolizza' AND field8 LIKE '$field8' AND field10 LIKE '$field10' AND field11 LIKE '$field11' AND field12 LIKE '$field12' AND field13 LIKE '$field13' ";
+	
+	$x_pag = 10000; //numero massimo di record per pagina
+	if ($pag=='') $pag = 1; //prendo il numero di pagina dal query string e se non c'è lo setto a 1
+	if ($ord=='') $ord = 'id';
+	
+	$sql = "SELECT * FROM ".$tablename." WHERE " . $condizioni;
+	$query = $db->sql_query($sql);
+	$all_rows = $db->sql_numrows($query);
+
+	$all_pages = ceil($all_rows / $x_pag);
+	$first = ($pag - 1) * $x_pag;
+	$sql = "SELECT * FROM ".$tablename." WHERE $condizioni ORDER BY $ord LIMIT $first, $x_pag";
 	$rs = $db->sql_query($sql);
 	$nr = $db->sql_numrows($rs);
 
-	echo "<table width=100% border=1 cellspacing=0 cellpadding=5 bordercolor=darkgreen>";
+	echo "<table width=100% border=1 cellspacing=0 cellpadding=0>";
 	echo "<tr>";
-	echo "<th width=10%><font face=verdana size=2>Payment deadline</th>";
-	echo "<th width=20%><font face=verdana size=2>Customer</th>";
-	echo "<th width=10%><font face=verdana size=2>Policy number</th>";
-	echo "<th width=10%><font face=verdana size=2>Type</th>";
-	echo "<th width=10%><font face=verdana size=2>Currency</th>";
-	echo "<th width=15%><font face=verdana size=2>Premium</th>";
-	echo "<th width=15%><font face=verdana size=2>Discount</th>";
-	echo "<th width=10%><font face=verdana size=2>Stamp</th>";
-	echo "<th width=10%><font face=verdana size=2>Net premium</th>";
+	echo "<th width=30%><font face=verdana size=2><a href=gestionale.php?name=lloyds&subname=scadenze&ord=numeropolizza>Numero polizza</a></th>";
+	echo "<th width=20%><font face=verdana size=2><a href=gestionale.php?name=lloyds&subname=scadenze&ord=field10>Scadenza</a></th>";
+	echo "<th width=20%><font face=verdana size=2><a href=gestionale.php?name=lloyds&subname=scadenze&ord=field12>Premio lordo</a></th>";
+	echo "<th width=20%><font face=verdana size=2>Premio prorata</th>";
+	echo "<th width=10%>&nbsp;</th>";
 	echo "</tr>";
+
+	if ($act == 'search') {
+		echo '<form action=gestionale.php method=get><input type=hidden name=ord value=' . $ord . '><input type=hidden name=name value=lloyds><input type=hidden name=subname value=scadenze><input type=hidden name=pag value=' . $pag . '><input type=hidden name=act value=gosearch>';
+		echo '<tr>';
+		echo "<td valign=middle align=center><input type=text name=numeropolizza size=10></td>";
+		echo "<td valign=middle align=center><input type=text name=field10 size=10></td>";
+		echo "<td valign=middle align=center><input type=text name=field12 size=10></td>";
+		echo "<td valign=middle align=center></td>";
+		echo "<td align=center valign=middle><input type=submit value=Cerca style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'><input type=reset value=Reset style='font-family: verdana; font-size: 8pt; border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px'></td>";
+		echo '</tr>';
+		echo '</form>';
+		$act = '';
+	}
 
 	if ($nr != 0){
 		while ($row = $db->sql_fetchrow($rs))
 		{
-			$annorecordprecedente = $annoscadenza;
-			$annoscadenza=date("Y",strtotime($row[field10]));
-			$annopartenza=date("Y",strtotime($row[field6]));
-			if ($annorecordprecedente!=$annoscadenza) {
-				echo "<tr>";
-					echo "<td colspan=9><font face=calibri style=font-size:13px;color:$color><strong>Polizze $annopartenza/$annoscadenza</td>";
-				echo "</tr>";
-				$tipologia='';
-			}
-			$sql="SELECT * FROM nuke_clienti_polizze WHERE id='$row[field3]'";
-			$recordset = $db->sql_query($sql);
-			$riga=$db->sql_fetchrow($recordset); 
-			$premio_lordo = ($row[field12]/365)*round($row[field11]);
-			$ribasso = $premio_lordo/100*$row[field14];
-			$prezzo_ribassato = $premio_lordo-$ribasso;
-			$bollo = $prezzo_ribassato/100*$row[field13];
-			$premio_netto = $prezzo_ribassato+$bollo;
-			
-			$sql_titoli = "
-											SELECT     DATA,DTSCA,TIPO, NRTIT, NRPOL, NRIC, NRPN, CLIE, POSIZ, COMP, AGE, DIV, CAMBIO, TLORDO, TDIVLORDO, LORDO, DIVLORDO, TPERCTAX, PERCTAX, TTASSE, 
-                      TDIVTASSE, TASSE, DIVTASSE, TIMPONIB, TDIVIMPON, IMPONIB, DIVIMPON, TACCESS, TDIVACCESS, ACCESS, DIVACCESS, TQUOTA, PROVV, TNETTO, TDIVNETTO, 
-                      NETTO, DIVNETTO, REGOLAZ, TCAUZIONE, PERCCAU, VIN, MIP, COMMERC, PRODPROVV, RETE, CEV, UTENTE, DTAGG, ANTICI, ASSE, BANCA, LINEA, GEDI, NDIC, 
-                      NDOC, NOTA, STATUS, PAGATO, TIT, TITSN, TLOY, AVVI, DOCCLI, DCOMP, DTMOR, DIFF, DIVDIFF, IMPT, DIVIMPT, TIMPT, TDIVIMPT, PATTIVE, DIVPATTIVE, 
-                      [TRAN], TECNO, PERCACC, PRVKASKO, DIVKASKO, IMPKASKO, PRVPKASKO, DIVPKASKO, IMPPKASKO, PASCOGE, DTLASTR, TRE, DTPAGCMP, DTINCPRV, DTEFFETT, 
-                      PASSIVE, DIVPASSIVE, LordoRC, TasseRC, CourtageRC, LordoCParz, TasseCParz, CourtageCParz, LordoCTot, TasseCTot, CourtageCTot, LordoInfo, TasseInfo, 
-                      CourtageInfo, LordoCGrave, TasseCGrave, CourtageCGrave, ContrUffNazAss, PagRateale, TotPagato, CambioPagamento, ContoTemp, PagatoProd, DataPagProd, 
-                      TotPagatoProd, CampoVuotoPerPagamento
-											FROM         [RASINI-APP".chr(92)."RVA_DB].RVA_PROD.dbo.TITOLI
-											WHERE     (CLIE = '$row[field3]') AND (NRPOL IN
-                      (SELECT     NRPOL
-                        FROM          [RASINI-APP".chr(92)."RVA_DB].RVA_PROD.dbo.POLIZZE
-                        WHERE      (NRCONTR = '".str_replace("EUROPLEX N. B072/BB011440C/","",$row[numeropolizza])."')))";
-      $rs_titoli = $db->sql_query1($sql_titoli);
-      $nr_titoli = $db->sql_numrows($rs_titoli);
-			
-			echo '<tr>';
-			echo "<td valign=middle align=center><font face=verdana size=2><strong>".date("F Y",strtotime($row[field6]))."</strong></td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>$riga[id] $riga[cognome] $riga[nome]</td>";
-			echo "<td valign=middle align=center><font face=verdana size=2><a href=gestionale.php?name=lloyds&subname=polizze&act=explode&idpolizza=$row[idpolizza]>".str_replace("EUROPLEX N. B072/BB011440C/","",$row[numeropolizza])."</a></td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>$row[field2]</td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>$row[valuta]</td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>";
-			if (round($row[field11])=='365' or round($row[field11])=='366') {
-				echo "On gg ".round($row[field11])."<br>".number_format((round($premio_lordo*20)/20),2,".",chr(180))."</td>";
-			}else{
-				echo "<table width=100%><td width=50%><font face=calibri size=2>";
-				echo "On gg 365 <br>".number_format((round($row[field12]*20)/20),2,".",chr(180))."</td>";
-				echo "<td width=50%><font face=calibri size=2>";
-				echo "On gg ".round($row[field11])."<br>".number_format((round($premio_lordo*20)/20),2,".",chr(180))."</td>";
-				echo "</table>";
-			}
-			echo "<td valign=middle align=center><font face=verdana size=2>$row[field14]%<br>(".number_format((round($ribasso*20)/20),2,".",chr(180)).")</td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>$row[field13]%<br>(".number_format((round($bollo*20)/20),2,".",chr(180)).")</td>";
-			echo "<td valign=middle align=center><font face=verdana size=2>".number_format((round($premio_netto*20)/20),2,".",chr(180))."</td>";
-			echo '</tr>';
-			
-			if ($nr_titoli>0) {
-				while ($row_titoli = $db->sql_fetchrow($rs_titoli))
-				{
-					$checked=' checked ';
-					$color='green';
-					$fontcolor='white';
-					if ($row_titoli[PAGATO]=='N') {$checked=' ';$color="yellow";$fontcolor='black';}
-					echo "<tr>";
-						echo "<td></td>";
-						echo "<td bgcolor=$color align=center><input disabled type=checkbox $checked></td>";
-						echo "<td bgcolor=$color colspan=7><font face=calibri style=font-size:12px;color:$fontcolor;>Respect of payment nr <strong>$row_titoli[NRTIT]</strong>&nbsp;&nbsp;::&nbsp;&nbsp;Expiring date <strong>$row[field6]</strong>&nbsp;&nbsp;::&nbsp;&nbsp;Sum <strong>$row_titoli[DIV] $row_titoli[LORDO]</strong></font></td>";
-					echo "</tr>";
-				}
-				echo "<tr>";
-					echo "<td colspan=9></td>";
-				echo "</tr>";
-				echo "<tr>";
-					echo "<td colspan=9></td>";
-				echo "</tr>";
-				echo "<tr>";
-					echo "<td colspan=9></td>";
-				echo "</tr>";
-			}
+		echo '<tr>';
+		echo "<td valign=middle align=center><font face=verdana size=2>$row[numeropolizza]</td>";
+		echo "<td valign=middle align=center><font face=verdana size=2>$row[field10]</td>";
+		echo "<td valign=middle align=center><font face=verdana size=2>$row[valuta] $row[field12]</td>";
+		$prorata = round(($row[field12]/365)*round($row[field11]));
+		echo "<td valign=middle align=center><font face=verdana size=2>$row[valuta] $prorata</td>";
+		//echo "<td align=center valign=middle><font face=verdana size=2><a href=gestionale.php?name=lloyds&subname=scadenze&act=mod&idpolizza=" . $row[idpolizza] . "><img border=0 src=immagini/modify.png></a></td>";
+		echo "<td align=center valign=middle><font face=verdana size=2><img border=0 src=immagini/modify.png></td>";
+		echo '</tr>';
 		}
 	}
 	echo "</table>";
+echo '</p>';
 CloseTable();
 
 ?>
@@ -122,4 +127,8 @@ CloseTable();
 <script language=JavaScript>
 	document.getElementById("offerte").scrollTop=<?php echo $_GET[scrolltop]; ?>;
 </script>
-</div>
+
+<?php
+echo "</div>";
+
+?>

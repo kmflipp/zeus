@@ -1,56 +1,48 @@
 <?php
 $subname = $_GET[subname];
+if($subname=='') {$subname='niente';$_GET[subname]='niente';}
+if($subname=='vita') {$subname='niente';$_GET[subname]='niente';}
 
-if ($subname=='') {
-	OpenTable();
-		echo '<table width=100% border=1 bordercolor=darkgreen cellspacing=0 cellpadding=5><td>';
-		echo "<input type=button value='Exit' onclick=location.href='gestionale.php?name=home' style=font-family: Verdana; font-size: 10px;>";
-		echo "</td></table>";
-	CloseTable();
-
-	OpenTable();
-	echo "<center><strong>LIFE<table cellspacing=5 cellpadding=0><tr><td align=center valign=top>";
-	echo "
-				<a href=gestionale.php?name=vita&subname=vita1>
-				<div class=image style=background-image:url('images/vita.png');width:256px;height:256px;position:inline-block;>
-				<div class=title style=position: static;bottom: 0px;width: 100%;overflow: none;><font style=color:white;font-size:15px;>Compare: Life</font></div>
-				</div></a>";
-	echo "</td><td align=center valign=top>";
-	echo "
-				<a href=gestionale.php?name=vita&subname=malattia>
-				<div class=image style=background-image:url('images/malattia.png');width:256px;height:256px;position:inline-block;>
-				<div class=title style=position: static;bottom: 0px;width: 100%;overflow: none;><font style=color:white;font-size:15px;>Compare: Ilness</font></div>
-				</div></a>";
-	echo "</td>";
-	echo "<td align=center valign=top>";
-	echo "
-				<a href=gestionale.php?name=vita&subname=lpp>
-				<div class=image style=background-image:url('images/lpp.png');width:256px;height:256px;position:inline-block;>
-				<div class=title style=position: static;bottom: 0px;width: 100%;overflow: none;><font style=color:white;font-size:15px;>Compare: LPP</font></div>
-				</div></a>";
-	echo "</td></tr></table><table cellspacing=5 cellpadding=0><tr><td align=center valign=top>";
-	echo "
-				<a href=gestionale.php?name=vita&subname=infortuni>
-				<div class=image style=background-image:url('images/infortuniu.png');width:256px;height:256px;position:inline-block;>
-				<div class=title style=position: static;bottom: 0px;width: 100%;overflow: none;><font style=color:white;font-size:15px;>Compare: Accident</font></div>
-				</div></a>";
-	echo "</td><td align=center valign=top>";
-	echo "
-				<a href=gestionale.php?name=vita&subname=complementari>
-				<div class=image style=background-image:url('images/complementare.png');width:256px;height:256px;position:inline-block;>
-				<div class=title style=position: static;bottom: 0px;width: 100%;overflow: none;><font style=color:white;font-size:15px;>Compare: Complementary</font></div>
-				</div></a>";
-	echo "</td></tr></table></center>";
-	
-	CloseTable();
+if (file_exists("gestionale/".$subname.".php")) {
+	include("gestionale/".$subname.".php");
 } else {
-	OpenTable();
-		echo '<table width=100% border=1 bordercolor=darkgreen cellspacing=0 cellpadding=5><td>';
-		echo "<input type=button value='Exit' onclick=location.href='gestionale.php?name=vita' style=font-family: Verdana; font-size: 10px;>";
-		echo "</td></table>";
-	CloseTable();
-	if (file_exists("gestionale/".$subname.".php")) {
-		include("gestionale/".$subname.".php");
-	}
+
+require_once("mainfile.php");
+include("header.php");
+global $prefix, $db, $admin, $user;
+
+$confirm = 'onclick="return confirm(' . chr(39) . 'Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?' . chr(39) . ')"';
+$act = $_GET[act];
+$id = $_GET[id];
+$pag = $_GET['pag'];
+$ord = $_GET['ord'];
+
+title("$sitename: Ramo <i>vita</i>");
+?>
+	<script>
+		if (navigator.appName=='Netscape') {
+			if (screen.height>1000) allora=screen.height-260;
+			if (screen.height<1000) allora=screen.height-290;
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:0;  _position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+		if (navigator.appName=='Microsoft Internet Explorer') {
+			if (window.document.documentElement.offsetHeight>1000) allora=window.document.documentElement.offsetHeight-200;
+			if (window.document.documentElement.offsetHeight<1000) allora=window.document.documentElement.offsetHeight-200;
+			document.write('<div class="offerte" id="offerte" style="position:relative;width:100%;margin-top:100;_position:absolute;_top:expression(eval(document.body.scrollTop)+58);height:'+allora+'px;overflow:auto;padding:0px;">');
+		}
+	</script>
+<?php
+OpenTable();
+
+CloseTable();
+
+?>
+
+<script language=JavaScript>
+	document.getElementById("offerte").scrollTop=<?php echo $_GET[scrolltop]; ?>;
+</script>
+
+<?php
+echo "</div>";
 }
 ?>

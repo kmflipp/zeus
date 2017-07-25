@@ -45,7 +45,7 @@ if ($row['radminsuper'] == 1) {
 			echo "<td align=\"center\" bgcolor=\"$bgcolor2\"><b>"._LANGUAGE."</b></td>";
 		}
 		echo "<td align=\"center\" bgcolor=\"$bgcolor2\"><b>"._FUNCTIONS."</b></tr>";
-		$result = $db->sql_query1("select bid, bkey, title, url, bposition, weight, active, blanguage, blockfile, [view] from ".$prefix."_blocks order by bposition, weight");
+		$result = $db->sql_query("select bid, bkey, title, url, bposition, weight, active, blanguage, blockfile, view from ".$prefix."_blocks order by bposition, weight");
 		while ($row = $db->sql_fetchrow($result)) {
 			$bid = intval($row['bid']);
 			$bkey = filter($row['bkey'], "nohtml");

@@ -45,63 +45,78 @@ function query_now3(tabindex,event,id,field,valore) {
 <?php
 global $prefix, $db, $admin, $user;
 $confirm = 'onclick="return confirm(' . chr(39) . 'Attenzione, questa azione non potrà essere annullata. Sei veramente sicuro di continuare?' . chr(39) . ')"';
-if ($blocca==1) $disabled = " disabled ";
+
 
 $rs_offerta = $db->sql_query("SELECT * FROM nuke_offerte where id=$_GET[id]");
 $row = $db->sql_fetchrow($rs_offerta);
 OpenTable();
-
-$somma_totale = number_format(($row[field8]*20)/20,2,'.',chr(180));
-$premio_lordo = number_format(($row[field12]*20)/20,2,".",chr(180));
+//somma assicurata e premio annuolordo
+echo '<table width=100% border=0 cellspacing=0 cellpadding=0>';
+echo '<tr>';
+echo '<td width=50% align=right><font face=verdana size=2><strong>Somma Assicurata</strong>&nbsp;</td>';
+echo "<td width=10%>&nbsp;</td>";
+echo "<td width=40% valign=middle align=left><input disabled type=text size=10 style='font-size:18px' id=3001 tabindex=3001 onkeyup=javascript:query_now3(3001,event,'$_GET[id]','field8',this.value) value='$row[field8]'>&nbsp;$row[valuta]</td>";
+echo '</tr>';
+echo "</table><hr>";
+echo '<table width=100% border=0 cellspacing=0 cellpadding=0>';
+echo '<tr>';
+echo '<td width=50% align=right><font face=verdana size=2><strong>Premio annuo lordo</strong>&nbsp;</td>';
+echo "<td width=10%>&nbsp;</td>";
+echo "<td width=40% valign=middle align=left><input type=text size=8 style='font-size:18px' id=3003 tabindex=3003 onkeyup=javascript:query_now3(3003,event,'$_GET[id]','field12',this.value) value='$row[field12]'>&nbsp;$row[valuta]</td>";
+echo "</tr>";
+echo '<tr>';
+echo "<td valign=middle align=right><font face=verdana size=2><strong>Ribasso</strong>&nbsp;</td>";
 if ($row[field14]=='5') $selected5=" selected ";
 if ($row[field14]=='10') $selected10=" selected ";
-$prezzo_ribassato = $row[field12]-($row[field12]*$row[field14]/100);
-$bollo = $prezzo_ribassato*$row[field13]/100;
-$premio_netto = $prezzo_ribassato+$bollo;
-
-$bollo = number_format(round($bollo*20)/20,2,".",chr(180));
-$prezzo_ribassato=number_format(round($prezzo_ribassato*20)/20,2,".",chr(180));
-$premio_netto=number_format(round($premio_netto*20)/20,2,".",chr(180));
-
-
-echo "<table width=100% border=1 cellspacing=0 cellpadding=5 bordercolor=darkgreen>";
-echo "<tr>";
-echo "<td align=left><font face=calibri size=2><strong>Somma Assicurata</strong>: <input readonly style=text-align:center;color:black; type=text size=25 id=3001 tabindex=3001 value='$somma_totale'>&nbsp;$row[valuta]</font></td>";
-echo "<td align=left><font face=calibri size=2><strong>Premio Lordo</strong>: <input readonly type=text style=text-align:center; size=25 id=3002 tabindex=3002 value='$premio_lordo'>&nbsp;$row[valuta]</font></td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td valign=middle colspan=2 align=left><font face=verdana size=2><strong>Ribasso</strong>: ";
-	echo "<select $disabled id=seleziona onChange=document.getElementById(3005).value=this.value;query_now3(3005,event,'$_GET[id]','field14',this.value);><option selected value=''></option><option $selected5 value=5>3 anni</option><option $selected10 value=10>5 anni</option></select>";
-	echo "&nbsp;&nbsp;&nbsp;<input $disabled type=text style=text-align:right; size=10 id=3005 tabindex=3005 onkeyup=javascript:query_now3(3005,event,'$_GET[id]','field14',this.value) value='$row[field14]'>%";
-	echo "<strong>&nbsp;&nbsp;&nbsp;".$risultato."</strong> $row[valuta]";
-echo "</tr>";
-echo "<tr>";
-echo "<td valign=middle colspan=2 align=left><font face=verdana size=2><strong>Bollo</strong>: ";
-	echo "<select $disabled id=3004 tabindex=3004 onchange=javascript:query_now3(3004,event,'$_GET[id]','field13',this.value)>";
-	echo "<option value=''></option>";
-	$rs_tassi = $db->sql_query("SELECT * FROM nuke_bolli");
-	while ($row_tassi = $db->sql_fetchrow($rs_tassi))
+echo "<td valign=middle align=left>
+			<select id=seleziona onChange=document.getElementById(3005).value=this.value;query_now3(3005,event,'$_GET[id]','field14',this.value);><option selected value=''></option><option $selected5 value=5>3 anni</option><option $selected10 value=10>5 anni</option></select>
+			<input type=text size=3 style='font-size:18px' id=3005 tabindex=3005 onkeyup=javascript:query_now3(3005,event,'$_GET[id]','field14',this.value) value='$row[field14]'>%
+			</td>";
+echo "<td>";
+			$risultato = $row[field12]*$row[field14]/100;
+			$prezzo_ribassato = $row[field12]-($row[field12]*$row[field14]/100);
+			$res = number_format(round($risultato*20)/20,2,".","'");
+			echo "<strong>-&nbsp; ".str_replace('.00','.-',$res)." $row[valuta]</strong>";
+echo "</td>";
+echo '</tr>';
+echo '<tr>';
+echo "<td valign=middle align=right><font face=verdana size=2><strong>Premio parziale</strong>&nbsp;</td>";
+echo "<td valign=middle align=left></td>";
+$res = number_format(round($prezzo_ribassato*20)/20,2,".","'");
+echo "<td><strong>=&nbsp; ".str_replace('.00','.-',$res)." $row[valuta]</strong></td>";
+echo '</tr>';
+echo "</table><hr>";
+echo '<table width=100% border=0 cellspacing=0 cellpadding=0>';
+echo '<tr>';
+echo "<td width=50% valign=middle align=right><font face=verdana size=3><strong>Bollo</strong>&nbsp;</td>";
+echo "<td width=10% valign=middle align=left>";
+echo "<select style='font-size:18px;width:80' id=3004 tabindex=3004 onchange=javascript:query_now3(3004,event,'$_GET[id]','field13',this.value)>";
+echo "<option value=''></option>";
+$rs_tassi = $db->sql_query("SELECT * FROM nuke_bolli");
+while ($row_tassi = $db->sql_fetchrow($rs_tassi))
 	{
-		$selected=" ";
-		if (trim(str_replace("%","",$row_tassi[field2]))==$row[field13]) $selected=" SELECTED ";
-		echo "<option".$selected."value=".trim(str_replace("%","",$row_tassi[field2])).">$row_tassi[field2]</option>";
-		$selected=" ";
+	$selected=" ";
+	if (trim(str_replace("%","",$row_tassi[field2]))==$row[field13]) $selected=" SELECTED ";
+	echo "<option".$selected."value=".trim(str_replace("%","",$row_tassi[field2])).">$row_tassi[field2]</option>";
+	$selected=" ";
 	}
-	echo "</select>";
-	echo "<strong>&nbsp;&nbsp;".$bollo."</strong> $row[valuta]";
-echo "</tr>";
-echo "<tr>";
-echo "<td valign=middle align=left><font face=verdana size=2><strong>Premio Netto</strong>: ";
-echo "<input readonly type=text size=25 style=text-align:center; id=3006 tabindex=3006 value='$premio_netto'>&nbsp;$row[valuta]</td>";
-echo "<td valign=middle align=left><input type=button value=Ricalcola onClick=window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id=$id'></td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td valign=middle align=left><font face=verdana size=2><strong>Rimborsi / Ristorni</strong>:<br>";
-echo "<input type=text size=25 style=text-align:center; id=3007 tabindex=3007 value='".trim($row[etichetta])."'>";
-echo "<input type=text size=25 style=text-align:center; id=3008 tabindex=3008 value='".trim($row[rimborso])."'>&nbsp;$row[valuta]</td>";
-echo "<td valign=middle align=left><input type=button value=Salva onClick=window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id=$id&rimborso='+document.getElementById(3008).value+'&etichetta='+document.getElementById(3007).value;><input type=button value=Cancella onClick=window.location='gestionale.php?name=lloyds&subname=offerte&act=explode&id=$id&rimborso=elimina';></td>";
-echo "</tr>";
+echo "</select></td>";
+echo "<td width=40%>";
+			$risultato = number_format(round($prezzo_ribassato*$row[field13]/100*20)/20,2,".","'");
+			echo "<strong>+&nbsp;".str_replace(".00",".-",$risultato)." $row[valuta]</strong>";
+echo "</td>";
+echo '</tr>';
+echo '<tr>';
+echo "<td width=50% valign=middle align=right><font face=verdana size=2><strong>Premio totale netto</strong>&nbsp;</td>";
+echo "<td width=10%>&nbsp;</td>";
+$res = round($row[field15]*20)/20;
+echo "<td width=40% valign=middle align=left>
+			<input type=text size=9 style='font-size:18px' id=3006 tabindex=3006 onkeyup=javascript:query_now3(3006,event,'$_GET[id]','field15',this.value) value='$res'>&nbsp;$row[valuta]
+			</td>";
+echo '</tr>';
 echo "</table>";
+echo "</p>";
+
 CloseTable();
 
 ?>

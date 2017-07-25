@@ -1,7 +1,60 @@
 <?php
+/************************************************************************/
+/* PHP-NUKE: Advanced Content Management System                         */
+/* ============================================                         */
+/*                                                                      */
+/* Copyright (c) 2005 by Francisco Burzi                                */
+/* http://phpnuke.org                                                   */
+/*                                                                      */
+/* This program is free software. You can redistribute it and/or modify */
+/* it under the terms of the GNU General Public License as published by */
+/* the Free Software Foundation; either version 2 of the License.       */
+/************************************************************************/
+
+// End the transaction
+if(!defined('END_TRANSACTION')) {
+  define('END_TRANSACTION', 2);
+}
+
+
 // Get php version
 $phpver = phpversion();
 
+// convert superglobals if php is lower then 4.1.0
+if ($phpver < '4.1.0') {
+  $_GET = $HTTP_GET_VARS;
+  $_POST = $HTTP_POST_VARS;
+  $_SERVER = $HTTP_SERVER_VARS;
+  $_FILES = $HTTP_POST_FILES;
+  $_ENV = $HTTP_ENV_VARS;
+  if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $_REQUEST = $_POST;
+  } elseif($_SERVER['REQUEST_METHOD'] == "GET") {
+    $_REQUEST = $_GET;
+  }
+  if(isset($HTTP_COOKIE_VARS)) {
+    $_COOKIE = $HTTP_COOKIE_VARS;
+  }
+  if(isset($HTTP_SESSION_VARS)) {
+    $_SESSION = $HTTP_SESSION_VARS;
+  }
+}
+
+// override old superglobals if php is higher then 4.1.0
+if($phpver >= '4.1.0') {
+  $HTTP_GET_VARS = $_GET;
+  $HTTP_POST_VARS = $_POST;
+  $HTTP_SERVER_VARS = $_SERVER;
+  $HTTP_POST_FILES = $_FILES;
+  $HTTP_ENV_VARS = $_ENV;
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+  if(isset($_SESSION)) {
+    $HTTP_SESSION_VARS = $_SESSION;
+  }
+  if(isset($_COOKIE)) {
+    $HTTP_COOKIE_VARS= $_COOKIE;
+  }
+}
 
 // After doing those superglobals we can now use one
 // and check if this file isnt being accessed directly
@@ -42,6 +95,11 @@ if (!ini_get('register_globals')) {
 //Beta 3 Code to prevent UNION SQL Injections
 unset($matches);
 unset($loc);
+if(isset($_SERVER['QUERY_STRING'])) {
+  if (preg_match("/([OdWo5NIbpuU4V2iJT0n]{5}) /", rawurldecode($loc=$_SERVER['QUERY_STRING']), $matches)) {
+    die('Illegal Operation');
+  }
+}
 
 // This block of code makes sure $admin and $user are COOKIES
 if((isset($admin) && $admin != $_COOKIE['admin']) OR (isset($user) && $user != $_COOKIE['user'])) {
@@ -112,6 +170,32 @@ $posttags .= "Please change browser or turn off the use of a proxy<br>";
 $posttags .= "or turn off the 'Deny servers to trace web browsing' in your firewall<br>";
 $posttags .= "and you shouldn't have problems when sending a POST on this website.";
 
+if (!defined('ADMIN_FILE')) {
+  foreach ($_GET as $sec_key => $secvalue) {
+    if ((eregi("<[^>]*script*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*object*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*iframe*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*applet*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*meta*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*style*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*form*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*img*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*onmouseover*\"?[^>]*>", $secvalue)) ||
+	(eregi("<[^>]*body*\"?[^>]*>", $secvalue)) ||
+	(eregi("\([^>]*\"?[^)]*\)", $secvalue)) ||
+	(eregi("\"", $secvalue)) ||
+	(eregi("forum_admin", $sec_key)) ||
+	(eregi("inside_mod", $sec_key))) {
+        die ($htmltags);
+     }
+  }
+
+  foreach ($_POST as $secvalue) {
+    if ((eregi("<[^>]*onmouseover*\"?[^>]*>", $secvalue)) || (eregi("<[^>]script*\"?[^>]*>", $secvalue)) || (eregi("<[^>]*body*\"?[^>]*>", $secvalue)) || (eregi("<[^>]style*\"?[^>]*>", $secvalue))) {
+      die ($htmltags);
+    }
+  }
+}
 
 // Posting from other servers in not allowed
 // Fix by Quake
@@ -292,7 +376,7 @@ function is_admin($admin) {
         $result = $db->sql_query($sql);
         $pass = $db->sql_fetchrow($result);
         $db->sql_freeresult($result);
-        if ($pass[pwd] == $pwd && !empty($pass[pwd])) {
+        if ($pass[0] == $pwd && !empty($pass[0])) {
             static $adminSave;
         	return $adminSave = 1;
         }
@@ -398,7 +482,7 @@ function is_active($module) {
     return 0;
 }
 
-function render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $url) {
+function render_blocks($side, $blockfile, $title, $content, $bid, $url) {
 	if(!defined('BLOCK_FILE')) {
 	  define('BLOCK_FILE', true);
 	}
@@ -409,7 +493,7 @@ function render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $u
 			} elseif ($side == "d") {
 				themecenterbox($title, $content);
 			} else {
-				themesidebox($title, $content,$content_a,$content_b);
+				themesidebox($title, $content);
 			}
 		} else {
 			if ($side == "c") {
@@ -476,13 +560,13 @@ function blocks($side) {
 				userblock();
 			} elseif (empty($row['bkey'])) {
 				if ($view == 0) {
-					render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $url);
+					render_blocks($side, $blockfile, $title, $content, $bid, $url);
 				} elseif ($view == 1 AND is_user($user) || is_admin($admin)) {
-					render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $url);
+					render_blocks($side, $blockfile, $title, $content, $bid, $url);
 				} elseif ($view == 2 AND is_admin($admin)) {
-					render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $url);
+					render_blocks($side, $blockfile, $title, $content, $bid, $url);
 				} elseif ($view == 3 AND !is_user($user) || is_admin($admin)) {
-					render_blocks($side, $blockfile, $title, $content, $content_a, $bid, $url);
+					render_blocks($side, $blockfile, $title, $content, $bid, $url);
 				}
 			}
 		}
@@ -624,7 +708,7 @@ function blockfileinc($title, $blockfile, $side=0) {
 	} elseif ($side == 2) {
 		themecenterbox($blockfiletitle, $content);
 	} else {
-		themesidebox($blockfiletitle, $content,$content_a,$content_b);
+		themesidebox($blockfiletitle, $content);
 	}
 }
 
@@ -651,7 +735,7 @@ function selectlanguage() {
 			}
 		}
 		$content .= "</font></center>";
-		themesidebox($title, $content,$content_a,$content_b);
+		themesidebox($title, $content);
 	} else {
 		$title = _SELECTLANGUAGE;
 		$content = "<center><font class=\"content\">"._SELECTGUILANG."<br><br></font>";
@@ -674,7 +758,7 @@ function selectlanguage() {
 			}
 		}
 		$content .= "</select></form></center>";
-		themesidebox($title, $content,$content_a,$content_b);
+		themesidebox($title, $content);
 	}
 }
 
@@ -830,7 +914,7 @@ function delQuotes($string){
 	return $result;
 }
 
-function check_html($str, $strip="") {
+function check_html ($str, $strip="") {
 	/* The core of this code has been lifted from phpslash */
 	/* which is licenced under the GPL. */
 	include("config.php");
@@ -974,7 +1058,7 @@ function adminblock() {
 			$content = filter($content);
 			$title = filter($title, "nohtml");
 			$content = "<span class=\"content\">".$content."</span>";
-			themesidebox($title, $content,$content_a,$content_b);
+			themesidebox($title, $content);
 		}
 		$title = _WAITINGCONT;
 		$num = $db->sql_numrows($db->sql_query("SELECT * FROM ".$prefix."_queue"));
@@ -994,7 +1078,7 @@ function adminblock() {
 		$content .= "<strong><big>&middot;</big></strong>&nbsp;<a href=\"".$admin_file.".php?op=downloads\">"._UDOWNLOADS."</a>: $num<br>";
 		$content .= "<strong><big>&middot;</big></strong>&nbsp;<a href=\"".$admin_file.".php?op=DownloadsListModRequests\">"._MODREQDOWN."</a>: $modreqd<br>";
 		$content .= "<strong><big>&middot;</big></strong>&nbsp;<a href=\"".$admin_file.".php?op=DownloadsListBrokenDownloads\">"._BROKENDOWN."</a>: $brokend<br></span>";
-		themesidebox($title, $content,$content_a,$content_b);
+		themesidebox($title, $content);
 	}
 }
 
@@ -1072,7 +1156,7 @@ function headlines($bid, $cenbox=0) {
 			$db->sql_query("UPDATE ".$prefix."_blocks SET content='$content', time='$btime' WHERE bid='$bid'");
 			$cont = 0;
 			if ($cenbox == 0) {
-				themesidebox($title, $content,$content_a,$content_b);
+				themesidebox($title, $content);
 			} else {
 				themecenterbox($title, $content);
 			}
@@ -1104,7 +1188,7 @@ function headlines($bid, $cenbox=0) {
 					$db->sql_query("UPDATE ".$prefix."_blocks SET content='$content', time='$btime' WHERE bid='$bid'");
 					$cont = 0;
 					if ($cenbox == 0) {
-						themesidebox($title, $content,$content_a,$content_b);
+						themesidebox($title, $content);
 					} else {
 						themecenterbox($title, $content);
 					}
@@ -1128,7 +1212,7 @@ function headlines($bid, $cenbox=0) {
 		$content = "<font class=\"content\">"._RSSPROBLEM."</font>";
 	}
 	if ($cenbox == 0) {
-		themesidebox($title, $content,$content_a,$content_b);
+		themesidebox($title, $content);
 	} else {
 		themecenterbox($title, $content);
 	}
