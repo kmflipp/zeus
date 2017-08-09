@@ -97,7 +97,6 @@ if ($the_first == 0) {
 		Header("Location: ".$admin_file.".php");
 		die();
 	}
-            echo $pwd;
 	if(!empty($aid) AND !empty($pwd)) {
 		$pwd = md5($pwd);
 		$result = $db->sql_query("SELECT pwd, admlanguage FROM ".$prefix."_authors WHERE aid='$aid'");

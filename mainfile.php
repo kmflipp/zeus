@@ -1,10 +1,46 @@
 <?php
+/************************************************************************/
+/* PHP-NUKE: Advanced Content Management System                         */
+/* ============================================                         */
+/*                                                                      */
+/* Copyright (c) 2005 by Francisco Burzi                                */
+/* http://phpnuke.org                                                   */
+/*                                                                      */
+/* This program is free software. You can redistribute it and/or modify */
+/* it under the terms of the GNU General Public License as published by */
+/* the Free Software Foundation; either version 2 of the License.       */
+/************************************************************************/
+
+// End the transaction
 if(!defined('END_TRANSACTION')) {
   define('END_TRANSACTION', 2);
 }
+
+
+// Get php version
 $phpver = phpversion();
 
+// convert superglobals if php is lower then 4.1.0
+if ($phpver < '4.1.0') {
+  $_GET = $HTTP_GET_VARS;
+  $_POST = $HTTP_POST_VARS;
+  $_SERVER = $HTTP_SERVER_VARS;
+  $_FILES = $HTTP_POST_FILES;
+  $_ENV = $HTTP_ENV_VARS;
+  if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $_REQUEST = $_POST;
+  } elseif($_SERVER['REQUEST_METHOD'] == "GET") {
+    $_REQUEST = $_GET;
+  }
+  if(isset($HTTP_COOKIE_VARS)) {
+    $_COOKIE = $HTTP_COOKIE_VARS;
+  }
+  if(isset($HTTP_SESSION_VARS)) {
+    $_SESSION = $HTTP_SESSION_VARS;
+  }
+}
 
+// override old superglobals if php is higher then 4.1.0
 if($phpver >= '4.1.0') {
   $HTTP_GET_VARS = $_GET;
   $HTTP_POST_VARS = $_POST;
@@ -32,7 +68,27 @@ if (!function_exists("floatval")) {
         return (float)$inputval;
     }
 }
+if ($phpver >= '4.0.4pl1' && isset($_SERVER['HTTP_USER_AGENT']) && strstr($_SERVER['HTTP_USER_AGENT'],'compatible')) {
+  if (extension_loaded('zlib')) {
+    @ob_end_clean();
+    ob_start('ob_gzhandler');
+  }
+} elseif ($phpver > '4.0' && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && !empty($_SERVER['HTTP_ACCEPT_ENCODING'])) {
+  if (strstr($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) {
+    if (extension_loaded('zlib')) {
+      $do_gzip_compress = true;
+      ob_start(array('ob_gzhandler',5));
+      ob_implicit_flush(0);
+      if (ereg("MSIE", $_SERVER['HTTP_USER_AGENT'])) {
+      header('Content-Encoding: gzip');
+      }
+    }
+  }
+}
 
+if (!ini_get('register_globals')) {
+  @import_request_variables("GPC", "");
+}
 
 //Union Tap
 //Copyright Zhen-Xjell 2004 http://nukecops.com
@@ -155,7 +211,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 
-
 // Define the INCLUDE PATH
 if(defined('FORUM_ADMIN')) {
 	define('INCLUDE_PATH', '../../../');
@@ -195,7 +250,6 @@ if($display_errors) {
   ini_set('display_errors', 0);
   error_reporting(0);
 }
-
 
 define('NUKE_FILE', true);
 $result = $db->sql_query("SELECT * FROM ".$prefix."_config");
